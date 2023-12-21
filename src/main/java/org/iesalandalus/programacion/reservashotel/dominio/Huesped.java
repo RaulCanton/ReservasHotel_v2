@@ -14,6 +14,7 @@ public class Huesped {
     private String dni;
     private LocalDate fechaNacimiento;
 
+
     public String getNombre() {
     return nombre;
     }
@@ -24,7 +25,15 @@ public class Huesped {
 
     private String formateaNombre(String nombre){
 
-        return nombre;
+        nombre = nombre.trim();
+        char[] nombreFormateado = nombre.toCharArray();
+        nombreFormateado[0] = Character.toUpperCase(nombreFormateado[0]);
+        for (int i = 0; i < nombre.length()-1; i++)
+            if (nombreFormateado[i] == ' ' || nombreFormateado[i] == '.' || nombreFormateado[i] == ',')
+                nombreFormateado[i + 1] = Character.toUpperCase(nombreFormateado[i + 1]);
+        return new String(nombreFormateado);
+
+
     }
 
     public String getTelefono(){
