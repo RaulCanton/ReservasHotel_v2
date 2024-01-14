@@ -8,7 +8,7 @@ import java.time.format.DateTimeFormatter;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HuespedTest {
-/*
+
     private static final String CADENA_NO_ESPERADA = "La cadena devuelta no es la esperada.";
 
     private static final String NOMBRE_NO_ESPERADO = "El nombre devuelto no es el mismo que el pasado al constructor.";
@@ -51,7 +51,7 @@ public class HuespedTest {
     private static final String ERROR_FECHA_NULA = "ERROR: La fecha de nacimiento de un huésped no puede ser nula.";
     private static final String HUESPED_NO_ESPERADO = "El huésped copiado debería ser el mismo que el pasado como parámetro.";
     private static final String HUESPED_NULO = "Debería haber saltado una excepción indicando que no se puede copiar un huésped nulo.";
-    private static final String ERROR_COPIAR_HUESPED_NULO = "ERROR: No es posible copiar un huésped nulo.";
+    private static final String ERROR_COPIAR_HUESPED_NULO = "No es posible copiar un huÃ©sped nulo.";
 
     @Test
     public void constructorNombreValidoDniValidoCorreoValidoTelefonoValidoFechaNacimientoValidaCreaHuespedCorrectamente() {
@@ -380,5 +380,4 @@ public class HuespedTest {
         assertEquals(String.format("nombre=%s (%s), DNI=%s, correo=%s, teléfono=%s, fecha nacimiento=%s", NOMBRE_ARDR, "ARDR", DNI_ARDR, CORREO_ARDR, TELEFONO_ARDR, FECHA_NACIMIENTO_ARDR.format(DateTimeFormatter.ofPattern(FORMATO_FECHA))), huesped.toString(), CADENA_NO_ESPERADA);
     }
 
- */
 }
