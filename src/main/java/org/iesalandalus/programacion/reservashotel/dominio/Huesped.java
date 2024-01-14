@@ -192,8 +192,8 @@ public Huesped (Huesped huesped){
         return Objects.hash(dni);
     }
     public String toString(){
-        return String.format(getNombre()+getDni()+ getCorreo()+ getTelefono()+
-                getFechaNacimiento().format(DateTimeFormatter.ofPattern(FORMATO_FECHA)));
+        return String.format("nombre=%s (%s), DNI=%s, correo=%s, teléfono=%s, fecha nacimiento=%s",getNombre(),getDni(), getCorreo(),
+                getTelefono(),getFechaNacimiento().format(DateTimeFormatter.ofPattern(FORMATO_FECHA)));
     }
 }
 
