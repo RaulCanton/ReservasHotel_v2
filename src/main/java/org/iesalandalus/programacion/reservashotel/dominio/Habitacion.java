@@ -16,7 +16,7 @@ public class Habitacion {
     private int puerta;
     private double precio;
     private TipoHabitacion tipoHabitacion;
-    private String descripcion;
+
 
     public String getIdentificador(){
         return identificador;
@@ -38,7 +38,7 @@ public class Habitacion {
 
     private void setPlanta(int planta){
         if (planta<MIN_NUMERO_PLANTA || planta>MAX_NUMERO_PLANTA){
-            throw new IllegalArgumentException("El número de planta no es correcto.");
+            throw new IllegalArgumentException("ERROR: No se puede establecer como planta de una habitación un valor menor que 1 ni mayor que 3.");
         }
         else {
             this.planta = planta;
@@ -51,7 +51,7 @@ public class Habitacion {
 
     private void setPuerta(int puerta){
         if (puerta<MIN_NUMERO_PUERTA||puerta>MAX_NUMERO_PUERTA){
-            throw new IllegalArgumentException("El número de puerta no es valido");
+            throw new IllegalArgumentException("ERROR: No se puede establecer como puerta de una habitación un valor menor que 1 ni mayor que 15.");
         }
         else {
             this.puerta = puerta;
@@ -62,12 +62,16 @@ public class Habitacion {
         return precio;
     }
 
-    public void setPrecio(double precio){
-        if (precio<MIN_PRECIO_HABITACION||precio>MAX_PRECIO_HABITACION){
-            throw new IllegalArgumentException("El precio introducido no es correcto.");
+    public void setPrecio(double precio) {
+        try {
+            if (precio < MIN_PRECIO_HABITACION || precio > MAX_PRECIO_HABITACION) {
+            }
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("ERROR: No se puede establecer como precio de una habitación un valor menor que 40.0 ni mayor que 150");
         }
-        else {
-        this.precio=precio;}
+
+
+        this.precio=precio;
     }
 
     public TipoHabitacion getTipoHabitacion(){
@@ -79,46 +83,40 @@ public class Habitacion {
 
 
     }
-    public String getDescripcion(){
-        return descripcion;
-    }
 
-    public void setDescripcion(String descripcion){
-        this.descripcion=descripcion;
-    }
 
-    public Habitacion(int planta, int puerta, double precio, String descripcion){
+
+    public Habitacion(int planta, int puerta, double precio, TipoHabitacion tipoHabitacion){
         try{
             setPlanta(planta);
-            setPuerta(puerta);
-            setPrecio(precio);
-            setDescripcion(descripcion);
-        } catch (IllegalArgumentException e){
-            throw new IllegalArgumentException("No se pudo crear la nueva habitación.");
+        }  catch (IllegalArgumentException e){
+            throw new IllegalArgumentException("ERROR: No se puede establecer como planta de una habitación un valor menor que 1 ni mayor que 3.");
         }
-    }
-
-    public Habitacion(int planta, int puerta, double precio, TipoHabitacion tipoHabitacion, String descripcion){
-
-        try{
-            setPlanta(planta);
+        try {
             setPuerta(puerta);
+        }  catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("ERROR: No se puede establecer como puerta de una habitación un valor menor que 1 ni mayor que 15.");
+        }
+        try{
             setPrecio(precio);
+        }  catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("ERROR: No se puede establecer como precio de una habitación un valor menor que 40.0 ni mayor que 150.0.");
+        }
             setTipoHabitacion(tipoHabitacion);
-            setDescripcion(descripcion);
-        } catch (IllegalArgumentException e){
-        throw new IllegalArgumentException("No se pudo crear la nueva habitación.");
-        }
     }
 
     public Habitacion(Habitacion habitacion){
-        Objects.requireNonNull(habitacion, "No es posible copiar una habitación nula.");
+        Objects.requireNonNull(habitacion, "ERROR: No es posible copiar una habitación nula.");
 
-        setPlanta(getPlanta());
-        setPuerta(getPuerta());
-        setPrecio(getPrecio());
-        setTipoHabitacion(getTipoHabitacion());
-        setDescripcion(getDescripcion());
+            setPlanta(getPlanta());
+
+            setPuerta(getPuerta());
+
+            setPrecio(getPrecio());
+
+            setTipoHabitacion(getTipoHabitacion());
+
+
     }
 
     @Override
