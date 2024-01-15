@@ -49,8 +49,9 @@ public class Habitacion {
         return puerta;
     }
 
-    private void setPuerta(int puerta){
-        if (puerta<MIN_NUMERO_PUERTA||puerta>MAX_NUMERO_PUERTA){
+    private void setPuerta(int puerta) {
+
+        if (puerta < MIN_NUMERO_PUERTA || puerta > MAX_NUMERO_PUERTA) {
             //throw new IllegalArgumentException("ERROR: No se puede establecer como puerta de una habitación un valor menor que 1 ni mayor que 15.");
         }
         else {
