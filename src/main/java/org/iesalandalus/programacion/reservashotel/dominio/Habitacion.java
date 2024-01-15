@@ -51,7 +51,7 @@ public class Habitacion {
 
     private void setPuerta(int puerta){
         if (puerta<MIN_NUMERO_PUERTA||puerta>MAX_NUMERO_PUERTA){
-            throw new IllegalArgumentException("ERROR: No se puede establecer como puerta de una habitación un valor menor que 1 ni mayor que 15.");
+            //throw new IllegalArgumentException("ERROR: No se puede establecer como puerta de una habitación un valor menor que 1 ni mayor que 15.");
         }
         else {
             this.puerta = puerta;
@@ -92,16 +92,17 @@ public class Habitacion {
         }  catch (IllegalArgumentException e){
             throw new IllegalArgumentException("ERROR: No se puede establecer como planta de una habitación un valor menor que 1 ni mayor que 3.");
         }
-        try {
-            setPuerta(puerta);
-        }  catch (IllegalArgumentException e) {
-            throw new IllegalArgumentException("ERROR: No se puede establecer como puerta de una habitación un valor menor que 1 ni mayor que 15.");
-        }
         try{
             setPrecio(precio);
         }  catch (IllegalArgumentException e) {
             throw new IllegalArgumentException("ERROR: No se puede establecer como precio de una habitación un valor menor que 40.0 ni mayor que 150.0.");
         }
+        try {
+            setPuerta(puerta);
+        }  catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("ERROR: No se puede establecer como puerta de una habitación un valor menor que 1 ni mayor que 15.");
+        }
+
             setTipoHabitacion(tipoHabitacion);
     }
 
