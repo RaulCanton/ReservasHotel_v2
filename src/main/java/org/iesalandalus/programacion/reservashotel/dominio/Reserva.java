@@ -69,7 +69,14 @@ public class Reserva {
     }
 
     public void setFechaFinReserva(LocalDate fechaFinReserva) {
-        this.fechaFinReserva = fechaFinReserva;
+
+        LocalDate fechaInicioReserva=this.fechaInicioReserva;
+        if (fechaFinReserva.isBefore(fechaInicioReserva)){
+            throw new DateTimeException("La fecha no puede ser anterior al inicio.");
+        }
+        else {
+            this.fechaFinReserva = fechaFinReserva;
+        }
     }
 
     public LocalDate getCheckIn() {

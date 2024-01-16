@@ -2,7 +2,7 @@ package org.iesalandalus.programacion.reservashotel.dominio;
 
 public enum TipoHabitacion {
 
-SUITE("Maxi",4),SIMPLE("Pequña",1),DOBLE("Mediana",2),TRIPLE("Grande",3);
+SUITE("SUITE",4),SIMPLE("SIMPLE",1),DOBLE("MEDIANA",2),TRIPLE("TRIPLE",3);
 
     String descripcion;
     int numeroMaximoPersonas;
