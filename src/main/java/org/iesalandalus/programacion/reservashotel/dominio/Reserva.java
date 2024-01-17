@@ -42,6 +42,7 @@ public class Reserva {
     }
 
     public void setRegimen(Regimen regimen) {
+        Objects.requireNonNull(regimen, "ERROR: El régimen de una reserva no puede ser nulo.");
         this.regimen = regimen;
     }
 
@@ -54,12 +55,11 @@ public class Reserva {
             throw new NullPointerException("ERROR: La fecha de inicio de una reserva no puede ser nula.");
         }
         LocalDate diaActual= LocalDate.now();
-        LocalDate date = fechaInicioreserva;
-        date=date.plus(Period.ofMonths(MAX_NUMERO_MESES_RESERVAS));
+        LocalDate date=diaActual.plus(Period.ofMonths(MAX_NUMERO_MESES_RESERVAS));
         if(diaActual.isAfter(fechaInicioreserva)){
-            throw new DateTimeException("La fecha no puede ser anterior a la actual.");
+            throw new DateTimeException("ERROR: La fecha de inicio de la reserva no puede ser anterior al día de hoy.");
         }
-        if (date.isAfter(fechaInicioreserva)){
+        if (fechaInicioReserva.isAfter(date)){
             throw new DateTimeException("ERROR: La fecha de inicio de la reserva no puede ser posterior a seis meses.");
         }
         else {
@@ -72,10 +72,12 @@ public class Reserva {
     }
 
     public void setFechaFinReserva(LocalDate fechaFinReserva) {
+        if ((fechaFinReserva==null)){
+            throw new NullPointerException("ERROR: La fecha de fin de una reserva no puede ser nula.");
+        }
 
-        LocalDate fechaInicioReserva=this.fechaInicioReserva;
-        if (fechaFinReserva.isBefore(fechaInicioReserva)){
-            throw new DateTimeException("La fecha no puede ser anterior al inicio.");
+        if (fechaFinReserva.isBefore(getFechaInicioReserva())){
+            throw new DateTimeException("ERROR: La fecha de fin de la reserva debe ser posterior a la de inicio.");
         }
         else {
             this.fechaFinReserva = fechaFinReserva;
