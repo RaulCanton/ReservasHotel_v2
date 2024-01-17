@@ -21,12 +21,12 @@ public class Habitacion {
     public String getIdentificador(){
        return identificador;
     }
-    private void setIdentificador(){
+    private void setIdentificador(String identificador){
         if (getPlanta() < MIN_NUMERO_PLANTA || getPlanta() > MAX_NUMERO_PLANTA ||
                 getPuerta() < MIN_NUMERO_PUERTA || getPuerta() > MAX_NUMERO_PUERTA) {
             throw new IllegalArgumentException("El identificador no es correcto.");
         }
-       this.identificador=String.format("%d%d",getPlanta(),getPuerta());
+      this.identificador=String.format("%d%d",getPlanta(),getPuerta());
     }
 
     public int getPlanta(){
@@ -81,14 +81,15 @@ public class Habitacion {
 
 
     public Habitacion(int planta, int puerta, double precio, TipoHabitacion tipoHabitacion){
-       /*if(this==null) {
+       if(this==null) {
            throw new NullPointerException("ERROR1: No es posible copiar una habitación nula.");
-       }*/
+       }
 
             setPlanta(planta);
             setPrecio(precio);
             setPuerta(puerta);
             setTipoHabitacion(tipoHabitacion);
+            setIdentificador(String.format("%d%d",getPlanta(),getPuerta()));
     }
 
     public Habitacion(Habitacion habitacion){
@@ -98,6 +99,7 @@ public class Habitacion {
             setPrecio(getPrecio());
             setPuerta(getPuerta());
             setTipoHabitacion(getTipoHabitacion());
+            setIdentificador(getIdentificador());
     }
 
     @Override

@@ -7,8 +7,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
 public class Reserva {
-    private static final int MAX_NUMERO_MESES_RESERVAS=10;
-    private static final int MAX_HORAS_POSTERIOR_CHECKOUT=1;
+    public static final int MAX_NUMERO_MESES_RESERVAS=6;
+    public static final int MAX_HORAS_POSTERIOR_CHECKOUT=1;
     public static final String FORMATO_FECHA_RESERVA=("yyyy/M/d");
 
     private Huesped huesped;
@@ -26,6 +26,7 @@ public class Reserva {
     }
 
     public void setHuesped(Huesped huesped) {
+        Objects.requireNonNull(huesped, "ERROR: El huésped de una reserva no puede ser nulo.");
         this.huesped = huesped;
     }
 
@@ -49,7 +50,9 @@ public class Reserva {
     }
 
     public void setFechaInicioReserva(LocalDate fechaInicioreserva) {
-
+        if (fechaInicioreserva==null){
+            throw new NullPointerException("ERROR: La fecha de inicio de una reserva no puede ser nula.");
+        }
         LocalDate diaActual= LocalDate.now();
         LocalDate date = fechaInicioreserva;
         date=date.plus(Period.ofMonths(MAX_NUMERO_MESES_RESERVAS));
@@ -57,7 +60,7 @@ public class Reserva {
             throw new DateTimeException("La fecha no puede ser anterior a la actual.");
         }
         if (date.isAfter(fechaInicioreserva)){
-            throw new DateTimeException("La fecha de reserva no puede superar el máximo de meses.");
+            throw new DateTimeException("ERROR: La fecha de inicio de la reserva no puede ser posterior a seis meses.");
         }
         else {
             this.fechaInicioReserva = fechaInicioreserva;
@@ -84,6 +87,12 @@ public class Reserva {
     }
 
     public void setCheckIn(LocalDate checkIn) {
+        if (checkIn==null){
+            throw new NullPointerException("ERROR: El checkin de una reserva no puede ser nulo.");
+        }
+        if(checkIn.isBefore(fechaInicioReserva)){
+            throw new IllegalArgumentException("ERROR: El checkin de una reserva no puede ser anterior a la fecha de inicio de la reserva. ");
+        }
         this.checkIn = checkIn;
     }
 
@@ -108,6 +117,7 @@ public class Reserva {
     }
 
     public void setNumeroPersonas(int numeroPersonas) {
+        if()
         this.numeroPersonas = numeroPersonas;
     }
 
