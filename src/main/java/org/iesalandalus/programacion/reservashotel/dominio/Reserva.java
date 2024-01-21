@@ -36,7 +36,7 @@ public class Reserva {
     public Habitacion getHabitacion() {
         return habitacion;
     }
-    public void setHabitacion(){
+    public void setHabitacion(Habitacion habitacion){
         this.habitacion=habitacion;
 
     }
@@ -159,7 +159,42 @@ public class Reserva {
 
     public void setNumeroPersonas(int numeroPersonas) {
 
+
+
         this.numeroPersonas = numeroPersonas;
+    }
+
+    public Reserva() {
+      setHuesped(huesped);
+      setHabitacion(habitacion);
+      setRegimen(regimen);
+      setFechaInicioReserva(fechaInicioReserva);
+      setFechaFinReserva(fechaFinReserva);
+      setNumeroPersonas(numeroPersonas);
+    }
+
+    public Reserva(Reserva reserva){
+        if (reserva==null) {
+            throw new NullPointerException("ERROR: No es posible copiar una reserva nula.");
+        }
+        setHuesped(reserva.huesped);
+        setHabitacion(reserva.habitacion);
+        setRegimen(reserva.regimen);
+        setFechaInicioReserva(reserva.fechaInicioReserva);
+        setFechaFinReserva(reserva.fechaFinReserva);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Reserva reserva = (Reserva) o;
+        return Objects.equals(habitacion, reserva.habitacion) && Objects.equals(fechaInicioReserva, reserva.fechaInicioReserva);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(habitacion, fechaInicioReserva);
     }
 
     public String toString(){
