@@ -126,28 +126,28 @@ public class Reserva {
 
     private void setPrecio(double precio) {
         if(habitacion.getTipoHabitacion()==TipoHabitacion.SIMPLE){
-            precio = precio+TipoHabitacion.SIMPLE.numeroMaximoPersonas *50;
+            precio = precio+(TipoHabitacion.SIMPLE.numeroMaximoPersonas *50);
         }
         if (habitacion.getTipoHabitacion()==TipoHabitacion.DOBLE){
-            precio=precio+TipoHabitacion.DOBLE.numeroMaximoPersonas* 50;
+            precio=precio+(TipoHabitacion.DOBLE.numeroMaximoPersonas* 50);
         }
         if (habitacion.getTipoHabitacion()==TipoHabitacion.TRIPLE){
-            precio=precio+TipoHabitacion.TRIPLE.numeroMaximoPersonas* 50;
+            precio=precio+(TipoHabitacion.TRIPLE.numeroMaximoPersonas* 50);
         }
         if (habitacion.getTipoHabitacion()==TipoHabitacion.SUITE){
-            precio=precio+TipoHabitacion.SUITE.numeroMaximoPersonas* 50;
+            precio=precio+(TipoHabitacion.SUITE.numeroMaximoPersonas* 50);
         }
         if (regimen==Regimen.SOLO_ALOJAMIENTO){
-            this.precio=precio+(Regimen.SOLO_ALOJAMIENTO.getIncrementoPrecio();
+            this.precio=precio+(Regimen.SOLO_ALOJAMIENTO.getIncrementoPrecio()*numeroPersonas);
         }
         if (regimen==Regimen.ALOJAMIENTO_DESAYUNO){
-            this.precio=precio+Regimen.ALOJAMIENTO_DESAYUNO.getIncrementoPrecio();
+            this.precio=precio+(Regimen.ALOJAMIENTO_DESAYUNO.getIncrementoPrecio()*numeroPersonas);
         }
         if (regimen==Regimen.MEDIA_PENSION){
-            this.precio=precio+Regimen.MEDIA_PENSION.getIncrementoPrecio();
+            this.precio=precio+(Regimen.MEDIA_PENSION.getIncrementoPrecio()*numeroPersonas);
         }
         if (regimen==Regimen.PENSION_COMPLETA){
-            this.precio=precio+Regimen.PENSION_COMPLETA.getIncrementoPrecio();
+            this.precio=precio+(Regimen.PENSION_COMPLETA.getIncrementoPrecio()*numeroPersonas);
         }
 
 
