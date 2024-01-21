@@ -2,7 +2,9 @@ package org.iesalandalus.programacion.reservashotel.dominio;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Period;
+import java.time.chrono.ChronoLocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
@@ -35,6 +37,7 @@ public class Reserva {
         return habitacion;
     }
     public void setHabitacion(){
+        this.habitacion=habitacion;
 
     }
 
@@ -104,6 +107,16 @@ public class Reserva {
     }
 
     public void setCheckOut(LocalDate checkOut) {
+        if (checkOut==null){
+            throw new NullPointerException("ERROR: El checkOut de una reserva no puede ser nulo.");
+        }
+        if(checkOut.isBefore(checkIn)){
+            throw new IllegalArgumentException("ERROR: El checkOut de una reserva no puede ser anterior al checkin. ");
+        }
+        LocalDateTime diaHoraOut =LocalDateTime.now().plusHours(MAX_HORAS_POSTERIOR_CHECKOUT);
+        if (checkOut.isAfter(ChronoLocalDate.from(diaHoraOut))){
+            throw new IllegalArgumentException(("ERROR: El checkout de una reserva puede ser como máximo 12 horas después de la fecha de fin de la reserva."));
+        }
         this.checkOut = checkOut;
     }
 
@@ -112,7 +125,32 @@ public class Reserva {
     }
 
     private void setPrecio(double precio) {
-        this.precio = precio;
+        if(habitacion.getTipoHabitacion()==TipoHabitacion.SIMPLE){
+            precio = precio+TipoHabitacion.SIMPLE.numeroMaximoPersonas *50;
+        }
+        if (habitacion.getTipoHabitacion()==TipoHabitacion.DOBLE){
+            precio=precio+TipoHabitacion.DOBLE.numeroMaximoPersonas* 50;
+        }
+        if (habitacion.getTipoHabitacion()==TipoHabitacion.TRIPLE){
+            precio=precio+TipoHabitacion.TRIPLE.numeroMaximoPersonas* 50;
+        }
+        if (habitacion.getTipoHabitacion()==TipoHabitacion.SUITE){
+            precio=precio+TipoHabitacion.SUITE.numeroMaximoPersonas* 50;
+        }
+        if (regimen==Regimen.SOLO_ALOJAMIENTO){
+            this.precio=precio+(Regimen.SOLO_ALOJAMIENTO.getIncrementoPrecio();
+        }
+        if (regimen==Regimen.ALOJAMIENTO_DESAYUNO){
+            this.precio=precio+Regimen.ALOJAMIENTO_DESAYUNO.getIncrementoPrecio();
+        }
+        if (regimen==Regimen.MEDIA_PENSION){
+            this.precio=precio+Regimen.MEDIA_PENSION.getIncrementoPrecio();
+        }
+        if (regimen==Regimen.PENSION_COMPLETA){
+            this.precio=precio+Regimen.PENSION_COMPLETA.getIncrementoPrecio();
+        }
+
+
     }
 
     public int getNumeroPersonas() {

@@ -79,7 +79,7 @@ public class Huesped {
             this.correo=correo;
         }
         else {
-            throw  new IllegalArgumentException("ERROR: El correo del huÃ©sped no tiene un formato vÃ¡lido.");
+            throw  new IllegalArgumentException("ERROR: El correo del huésped no tiene un formato válido.");
         }
 
     }
@@ -110,7 +110,7 @@ public class Huesped {
         comparador = patron.matcher(dni);
 
         if (!comparador.matches()) {
-            throw new IllegalArgumentException("ERROR: El dni del huÃ©sped no tiene un formato vÃ¡lido.");
+            throw new IllegalArgumentException("ERROR: El dni del huésped no tiene un formato válido.");
         }
         numeroDni = Integer.parseInt(comparador.group(1));
         String letraDni =comparador.group(2);
@@ -119,7 +119,7 @@ public class Huesped {
         if (letraDni.equals(String.valueOf(caracterDni))) {
             return true;
         } else{
-            throw new IllegalArgumentException("El dni introducido no es correcto.");
+            throw new IllegalArgumentException("ERROR: La letra del dni del huésped no es correcta.");
         }
     }
 
@@ -150,9 +150,7 @@ public class Huesped {
 
 
 public Huesped(String nombre,String dni,String correo, String telefono,LocalDate fechaNacimiento){
-        if (this==null){
-            throw new NullPointerException("No se pudo crear el nuevo huésped.");
-        }
+
 
         setNombre(nombre);
         setDni(dni);
@@ -163,7 +161,7 @@ public Huesped(String nombre,String dni,String correo, String telefono,LocalDate
 }
 
 public Huesped (Huesped huesped){
-     Objects.requireNonNull(huesped, "No es posible copiar un huÃƒÂ©sped nulo.");
+     Objects.requireNonNull(huesped, "No es posible copiar un huésped nulo.");
 
 
         setNombre(huesped.getNombre());
