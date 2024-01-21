@@ -166,11 +166,11 @@ public Huesped (Huesped huesped){
      Objects.requireNonNull(huesped, "No es posible copiar un huésped nulo.");
 
 
-        setNombre(getNombre());
-        setDni(getDni());
-        setCorreo(getCorreo());
-        setTelefono(getTelefono());
-        setFechaNacimiento(getFechaNacimiento());
+        setNombre(huesped.getNombre());
+        setDni(huesped.getDni());
+        setCorreo(huesped.getCorreo());
+        setTelefono(huesped.getTelefono());
+        setFechaNacimiento(huesped.getFechaNacimiento());
 }
 
     @Override

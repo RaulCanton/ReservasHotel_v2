@@ -8,8 +8,9 @@ import java.util.Objects;
 
 public class Reserva {
     public static final int MAX_NUMERO_MESES_RESERVAS=6;
-    public static final int MAX_HORAS_POSTERIOR_CHECKOUT=1;
+    public static final int MAX_HORAS_POSTERIOR_CHECKOUT=12;
     public static final String FORMATO_FECHA_RESERVA=("yyyy/M/d");
+    public static final String FORMATO_FECHA_HORA_RESERVA="dd/MM/yyyy";
 
     private Huesped huesped;
     private Habitacion habitacion;
@@ -26,7 +27,7 @@ public class Reserva {
     }
 
     public void setHuesped(Huesped huesped) {
-        Objects.requireNonNull(huesped, "ERROR: El huésped de una reserva no puede ser nulo.");
+        Objects.requireNonNull(huesped, "ERROR: El huÃ©sped de una reserva no puede ser nulo.");
         this.huesped = huesped;
     }
 
@@ -42,7 +43,7 @@ public class Reserva {
     }
 
     public void setRegimen(Regimen regimen) {
-        Objects.requireNonNull(regimen, "ERROR: El régimen de una reserva no puede ser nulo.");
+        Objects.requireNonNull(regimen, "ERROR: El rÃ©gimen de una reserva no puede ser nulo.");
         this.regimen = regimen;
     }
 
@@ -57,7 +58,7 @@ public class Reserva {
         LocalDate diaActual= LocalDate.now();
         LocalDate date=diaActual.plus(Period.ofMonths(MAX_NUMERO_MESES_RESERVAS));
         if(diaActual.isAfter(fechaInicioreserva)){
-            throw new DateTimeException("ERROR: La fecha de inicio de la reserva no puede ser anterior al día de hoy.");
+            throw new DateTimeException("ERROR: La fecha de inicio de la reserva no puede ser anterior al dÃ­a de hoy.");
         }
         if (fechaInicioReserva.isAfter(date)){
             throw new DateTimeException("ERROR: La fecha de inicio de la reserva no puede ser posterior a seis meses.");
@@ -119,29 +120,19 @@ public class Reserva {
     }
 
     public void setNumeroPersonas(int numeroPersonas) {
-        if()
+
         this.numeroPersonas = numeroPersonas;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Reserva reserva = (Reserva) o;
-        return Objects.equals(habitacion, reserva.habitacion) && Objects.equals(fechaInicioReserva, reserva.fechaInicioReserva);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(habitacion, fechaInicioReserva);
-    }
-
     public String toString(){
-        return String.format("Huesped: %s %s Habitación:%s - %s Fecha Inicio Reserva: %s Fecha Fin Reserva: %s Checkin: %s Checkout: %s Precio: %.2f Personas: %d",getHuesped().getNombre(), getHuesped().getDni(),
+        return String.format("Huesped: %s %s HabitaciÃ³n:%s - %s Fecha Inicio Reserva: %s Fecha Fin Reserva: %s Checkin: %s Checkout: %s Precio: %.2f Personas: %d",getHuesped().getNombre(), getHuesped().getDni(),
                 getHabitacion().getIdentificador(),getHabitacion().getTipoHabitacion(), getFechaInicioReserva().format(DateTimeFormatter.ofPattern(FORMATO_FECHA_RESERVA)),
                 getFechaFinReserva(), "No registrado", "No registrado", getPrecio(), 1);
 
     }
+
+
+
 }
 
 
