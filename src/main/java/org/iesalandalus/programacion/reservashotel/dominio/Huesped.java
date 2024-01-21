@@ -79,7 +79,7 @@ public class Huesped {
             this.correo=correo;
         }
         else {
-            throw  new IllegalArgumentException("El correo de un huésped no puede ser nulo.");
+            throw  new IllegalArgumentException("ERROR: El correo del huÃ©sped no tiene un formato vÃ¡lido.");
         }
 
     }
@@ -110,7 +110,7 @@ public class Huesped {
         comparador = patron.matcher(dni);
 
         if (!comparador.matches()) {
-            throw new IllegalArgumentException("El dni no es valido");
+            throw new IllegalArgumentException("ERROR: El dni del huÃ©sped no tiene un formato vÃ¡lido.");
         }
         numeroDni = Integer.parseInt(comparador.group(1));
         String letraDni =comparador.group(2);
@@ -163,7 +163,7 @@ public Huesped(String nombre,String dni,String correo, String telefono,LocalDate
 }
 
 public Huesped (Huesped huesped){
-     Objects.requireNonNull(huesped, "No es posible copiar un huésped nulo.");
+     Objects.requireNonNull(huesped, "No es posible copiar un huÃƒÂ©sped nulo.");
 
 
         setNombre(huesped.getNombre());

@@ -7,7 +7,7 @@ public class Habitacion {
     public static final double MIN_PRECIO_HABITACION= 40;
     public static final double MAX_PRECIO_HABITACION = 150;
     public static final int MIN_NUMERO_PUERTA=0;
-    public static final int MAX_NUMERO_PUERTA=15;
+    public static final int MAX_NUMERO_PUERTA=14;
     public static final int MIN_NUMERO_PLANTA=1;
     public static final int MAX_NUMERO_PLANTA=3;
 
@@ -49,7 +49,7 @@ public class Habitacion {
     private void setPuerta(int puerta) {
 
         if (puerta < MIN_NUMERO_PUERTA || puerta > MAX_NUMERO_PUERTA) {
-            throw new NullPointerException("ERROR: No se puede establecer un tipo de habitación nula.");
+            throw new IllegalArgumentException("ERROR: No se puede establecer como puerta de una habitación un valor menor que 0 ni mayor que 14.");
         }
             this.puerta = puerta;
     }
