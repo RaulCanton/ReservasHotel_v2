@@ -8,6 +8,7 @@ import org.iesalandalus.programacion.utilidades.Entrada;
 
 
 import javax.naming.OperationNotSupportedException;
+import java.time.LocalDate;
 
 public class Huespedes {
 
@@ -53,7 +54,7 @@ public class Huespedes {
         }
         int indice=buscarIndice(huesped);
         if (capacidadSuperada(indice)){
-            throw new OperationNotSupportedException("Error");
+            throw new OperationNotSupportedException("ERROR: No se aceptan más huéspedes.");
         }
         if (tamanoSuperado(indice)){
             coleccionHuesped[indice]= new Huesped(huesped);
@@ -92,13 +93,12 @@ public class Huespedes {
 
     }
     public Huesped buscar (Huesped huesped){
+
         if (huesped == null) {
             throw new NullPointerException("ERROR: No se puede buscar un huésped nulo.");
         }
 
         int indice=buscarIndice(huesped);
-        boolean encontrado=false;
-
         if (tamanoSuperado(indice)){
             return null;
         }else{

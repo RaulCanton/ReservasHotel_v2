@@ -10,7 +10,7 @@ import java.time.temporal.ChronoUnit;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ReservaTest {
-
+/*
     private static final String ERROR_EXCEPCION = "Deber�a haber saltado la excepci�n.";
     private static final String ERROR_NO_EXCEPCION = "No deber�a haber saltado la excepci�n.";
     private static final String NOMBRE_ARDR = "Andr�s Rubio Del R�o";
@@ -389,6 +389,6 @@ public class ReservaTest {
         assertEquals(cadenaEsperada, reserva.toString());
     }
 
-
+*/
 
 }

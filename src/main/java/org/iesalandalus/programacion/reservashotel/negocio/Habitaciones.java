@@ -13,7 +13,7 @@ public class Habitaciones {
     private Habitacion[] coleccionHabitacion;
 
 
-    public Habitacion (int capacidad) {
+    public Habitaciones (int capacidad) {
         if (capacidad <=0){
             throw new IllegalArgumentException("ERROR: La Habitación debe ser mayor que cero.");
         }
@@ -31,7 +31,7 @@ public class Habitaciones {
     private Habitacion[] copiaProfundaHabitacion(){
         Habitacion[] copiaHabitacion = new Habitacion[capacidad];
         for (int i =0; !tamanoSuperado(i);i++){
-            copiaHabitacion[i] =new Habitacion(copiaHabitacion[i]);
+            copiaHabitacion[i] =new Habitacion(coleccionHabitacion[i]);
         }
         return copiaHabitacion;
     }
@@ -44,17 +44,17 @@ public class Habitaciones {
     }
     public void insertar (Habitacion habitacion) throws OperationNotSupportedException {
         if (habitacion == null) {
-            throw new NullPointerException("ERROR: No se puede insertar un huésped nulo.");
+            throw new NullPointerException("ERROR: No se puede insertar una habitación nula.");
         }
         int indice=buscarIndice(habitacion);
         if (capacidadSuperada(indice)){
-            throw new OperationNotSupportedException("Error");
+            throw new OperationNotSupportedException("ERROR: No se aceptan más habitaciones.");
         }
         if (tamanoSuperado(indice)){
             coleccionHabitacion[indice]= new Habitacion(habitacion);
             tamano++;
         }else {
-            throw new OperationNotSupportedException("ERROR:Y existe un huésped con esos datos.");
+            throw new OperationNotSupportedException("ERROR:Ya existe una habitación con esos datos.");
         }
     }
 
@@ -65,7 +65,7 @@ public class Habitaciones {
         int indice=-1;
         boolean habitacionEncontrado = false;
         if (habitacion == null) {
-            throw new NullPointerException("ERROR: No se puede buscar el indice de un huésped nulo.");
+            throw new NullPointerException("ERROR: No se puede buscar el indice de una habitación nula.");
         }
         while (!tamanoSuperado(indice) && !habitacionEncontrado) {
             if (coleccionHabitacion[indice].equals(habitacion)) {
@@ -88,11 +88,10 @@ public class Habitaciones {
     }
     public Habitacion buscar (Habitacion habitacion){
         if (habitacion == null) {
-            throw new NullPointerException("ERROR: No se puede buscar un huésped nulo.");
+            throw new NullPointerException("ERROR: No se puede buscar una habitación nula.");
         }
 
         int indice=buscarIndice(habitacion);
-        boolean encontrado=false;
 
         if (tamanoSuperado(indice)){
             return null;
@@ -104,13 +103,13 @@ public class Habitaciones {
 
     public void borrar (Habitacion habitacion) throws OperationNotSupportedException {
         if (habitacion == null) {
-            throw new NullPointerException("ERROR: No se puede borrar un huésped nulo.");
+            throw new NullPointerException("ERROR: No se puede borrar una habitación nula.");
         }
 
 
         int indice = buscarIndice(habitacion);
         if (tamanoSuperado(indice)) {
-            throw new OperationNotSupportedException("ERROR:No existe ningún huésped con ese nombre.");
+            throw new OperationNotSupportedException("ERROR:No existe ningúna habitación con esos datos.");
         } else {
             despalzarUnaPosicionHaciaLaIzquierda(indice);
         }
