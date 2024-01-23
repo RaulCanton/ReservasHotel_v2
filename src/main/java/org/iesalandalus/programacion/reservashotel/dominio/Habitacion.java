@@ -79,7 +79,7 @@ public class Habitacion {
 
 
 
-    public Habitacion(int planta, int puerta, double precio, TipoHabitacion tipoHabitacion){
+    public Habitacion(int planta, int puerta, double precio, TipoHabitacion tipoHabitacion,String identificador){
 
 
             setPlanta(planta);

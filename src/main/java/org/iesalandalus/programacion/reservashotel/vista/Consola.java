@@ -1,6 +1,6 @@
 package org.iesalandalus.programacion.reservashotel.vista;
 
-import org.iesalandalus.programacion.reservashotel.dominio.Huesped;
+import org.iesalandalus.programacion.reservashotel.dominio.*;
 import org.iesalandalus.programacion.reservashotel.negocio.Huespedes;
 import org.iesalandalus.programacion.utilidades.Entrada;
 
@@ -25,6 +25,7 @@ public class Consola {
         do {
             System.out.println("Elige una opción: ");
             ordinalOpcion = Entrada.entero();
+
         } while (!Opcion.esOrdinalValido(ordinalOpcion));
         return ordinalOpcion;
     }
@@ -32,10 +33,11 @@ public class Consola {
     public static Huesped leerHuesped() {
         Huesped huesped = null;
         String nombre;
-        String dni;// = leerClientePorDni();
+        String dni;
         String telefono;
         String correo;
-        LocalDate fechaNacimiento=leerFecha();
+
+        String fechaNacimiento;
 
         do {
             System.out.print("Introduce el nombre del huésped: ");
@@ -53,43 +55,133 @@ public class Consola {
             System.out.print("Introduce el correo del huésped: ");
             correo = Entrada.cadena();
         }while (correo == null || correo.equals(""));
+        do {
+            System.out.print("Introduce la fecha de nacimiento del huésped: ");
+            fechaNacimiento = Entrada.cadena();
+        }while (fechaNacimiento == null || fechaNacimiento.equals(""));
 
-        huesped = new Huesped(nombre,dni,telefono,correo,fechaNacimiento);
-        return new Huesped(huesped);
+        LocalDate formatoDia = LocalDate.parse(fechaNacimiento);
+        return  new Huesped(nombre,dni,telefono,correo,formatoDia);
+
     }
-    public static String leerClientePorDni()throws OperationNotSupportedException {
+    public static Huesped leerClientePorDni()throws OperationNotSupportedException {
         String dni;
-        LocalDate fechaNacimiento=leerFecha();
-        int i;
+
+        LocalDate formatoDia = LocalDate.parse("23/07/1980");
+
         do {
             System.out.print("Introduce el dni del cliente: ");
             dni = Entrada.cadena();
         } while (dni.equals(""));
 
-        Huesped huesped1=new Huesped("Pepito Perez Perez",dni,"900101010","loquesea@gmail.com",fechaNacimiento);
-        i= Huespedes.buscarIndice(huesped1);
+        return new Huesped("Pepito Perez Perez",dni,"900101010","loquesea@gmail.com",formatoDia);
+
+        /*
+        int i;
+        i= Huespedes.(huesped1);
         if (i==-1)
             throw new OperationNotSupportedException("El dni buscado no es de un cliente.");
         else
         {
             return coleccionHuesped[i];
-        }
+        }*/
     }
 
-    public static LocalDate leerFecha() {
-        String dia;
+    public static LocalDate leerFecha(String mensaje) {
+        mensaje= "";
         boolean diaCorrecto = false;
-        DateTimeFormatter formatoDia = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+      //  DateTimeFormatter formatoDia = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         do {
             System.out.print("Introduce el día (aaaa/mm/dd): ");
-            dia = Entrada.cadena();
+            mensaje = Entrada.cadena();
             try {
-                LocalDate.parse(dia, formatoDia);
+                LocalDate.parse(mensaje);
                 diaCorrecto = true;
             } catch (DateTimeParseException e) {
                 diaCorrecto = false;
             }
         } while (!diaCorrecto);
-        return LocalDate.parse(dia, formatoDia);
+        return LocalDate.parse(mensaje);
     }
+    public static Habitacion leerHabitacion(){
+
+        int planta;
+        int puerta;
+        double precio;
+        TipoHabitacion tipoHabitacion;
+
+        do {
+            System.out.print("Introduce el número de planta. ");
+            planta = Entrada.entero();
+        }while (planta <0 || planta>3);
+        do {
+            System.out.print("Introduce el número de puerta. ");
+            puerta = Entrada.entero();
+        }while (puerta <0 || puerta>14);
+        do {
+            System.out.print("Introduce el precio de la habitación. ");
+            precio = Entrada.entero();
+        }while (precio <40 || precio>150);
+        String identificador=(String.format("%d%d",planta,puerta));
+        return new Habitacion(planta,puerta,precio,leerTipoHabitacion(),identificador);
+
+    }
+    public static Habitacion leerHabitacionPorIdentificador(){
+        int planta;
+        int puerta;
+        double precio;
+        TipoHabitacion tipoHabitacion;
+        do {
+            System.out.print("Introduce el número de planta. ");
+            planta = Entrada.entero();
+        }while (planta <0 || planta>3);
+        do {
+            System.out.print("Introduce el número de puerta. ");
+            puerta = Entrada.entero();
+        }while (puerta <0 || puerta>14);
+        String identificador=(String.format("%d%d",planta,puerta));
+        return new Habitacion(planta,puerta,40,TipoHabitacion.SIMPLE,identificador);
+
+    }
+
+    public static TipoHabitacion leerTipoHabitacion(){
+        int tipoHabi;
+        do {
+            System.out.print("Introduce el tipo de habitación 1.-SUITE 2.-SIMPLE 3.-DOBLE 4.-TRIPLE .");
+            tipoHabi = Entrada.entero();
+        } while (tipoHabi < 1 || tipoHabi > 4);
+        return TipoHabitacion.values()[tipoHabi];
+
+    }
+
+    public static Regimen leerRegimen(){
+        int tipoRegi;
+        do {
+            System.out.print("Introduce el tipo de habitación 1.-SOLO ALOJAMIENTO " +
+                    "2.-ALOJAMIENTO DESAYUNO 3.-MEDIA_PENSION 4.-PENSION_COMPLETA .");
+            tipoRegi = Entrada.entero();
+        } while (tipoRegi < 1 || tipoRegi > 4);
+        return Regimen.values()[tipoRegi];
+
+    }
+    public static Reserva leerReserva(){
+        int numeroPersonas;
+        String fechaIn;
+        String fechaFin;
+
+        System.out.print("Introduce la fecha de checkIn. ");
+        fechaIn = Entrada.cadena();
+        LocalDate fechaInicioReserva = LocalDate.parse(fechaIn);
+
+        System.out.print("Introduce la fecha de checkOut. ");
+        fechaFin = Entrada.cadena();
+        LocalDate fechaFinReserva = LocalDate.parse(fechaFin);
+
+        System.out.print("Introduce el número de personas. ");
+        numeroPersonas = Entrada.entero();
+
+        return new Reserva(leerHuesped(),leerHabitacion(),leerRegimen(),fechaInicioReserva,fechaFinReserva,numeroPersonas);
+
+    }
+
 }

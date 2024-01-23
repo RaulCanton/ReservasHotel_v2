@@ -200,7 +200,7 @@ public class Reserva {
     public String toString(){
         return String.format("Huesped: %s %s Habitación:%s - %s Fecha Inicio Reserva: %s Fecha Fin Reserva: %s Checkin: %s Checkout: %s Precio: %.2f Personas: %d",getHuesped().getNombre(), getHuesped().getDni(),
                 getHabitacion().getIdentificador(),getHabitacion().getTipoHabitacion(), getFechaInicioReserva().format(DateTimeFormatter.ofPattern(FORMATO_FECHA_RESERVA)),
-                getFechaFinReserva(), "No registrado", "No registrado", getPrecio(), 1);
+                getFechaFinReserva(), getPrecio());
 
     }
 
