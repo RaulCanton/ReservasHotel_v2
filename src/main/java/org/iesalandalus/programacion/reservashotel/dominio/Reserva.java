@@ -164,7 +164,8 @@ public class Reserva {
         this.numeroPersonas = numeroPersonas;
     }
 
-    public Reserva() {
+    public Reserva(Huesped huesped,Habitacion habitacion,Regimen regimen,
+                   LocalDate fechaInicioReserva,LocalDate fechaFinReserva,int numeroPersonas) {
       setHuesped(huesped);
       setHabitacion(habitacion);
       setRegimen(regimen);

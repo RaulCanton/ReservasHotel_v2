@@ -9,6 +9,8 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+import static java.time.chrono.JapaneseEra.values;
+
 public class Consola {
     private Consola(){
 
@@ -20,14 +22,14 @@ public class Consola {
         }
     }
 
-    public static int elegirOpcion() {
+    public static Opcion elegirOpcion() {
         int ordinalOpcion;
         do {
             System.out.println("Elige una opción: ");
             ordinalOpcion = Entrada.entero();
 
-        } while (!Opcion.esOrdinalValido(ordinalOpcion));
-        return ordinalOpcion;
+        } while (ordinalOpcion >= 0 && ordinalOpcion <= values().length - 1);
+        return Opcion.getOpcionSegunOrdinal(ordinalOpcion);
     }
 
     public static Huesped leerHuesped() {
@@ -64,7 +66,7 @@ public class Consola {
         return  new Huesped(nombre,dni,telefono,correo,formatoDia);
 
     }
-    public static Huesped leerClientePorDni()throws OperationNotSupportedException {
+    public static Huesped leerClientePorDni(){
         String dni;
 
         LocalDate formatoDia = LocalDate.parse("23/07/1980");
@@ -76,21 +78,13 @@ public class Consola {
 
         return new Huesped("Pepito Perez Perez",dni,"900101010","loquesea@gmail.com",formatoDia);
 
-        /*
-        int i;
-        i= Huespedes.(huesped1);
-        if (i==-1)
-            throw new OperationNotSupportedException("El dni buscado no es de un cliente.");
-        else
-        {
-            return coleccionHuesped[i];
-        }*/
+
     }
 
     public static LocalDate leerFecha(String mensaje) {
         mensaje= "";
         boolean diaCorrecto = false;
-      //  DateTimeFormatter formatoDia = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+
         do {
             System.out.print("Introduce el día (aaaa/mm/dd): ");
             mensaje = Entrada.cadena();
@@ -168,6 +162,10 @@ public class Consola {
         int numeroPersonas;
         String fechaIn;
         String fechaFin;
+        Huesped huesped = new Huesped(Consola.leerHuesped());
+        Habitacion habitacion = new Habitacion(Consola.leerHabitacion());
+        Regimen regimen;
+        regimen=Consola.leerRegimen();
 
         System.out.print("Introduce la fecha de checkIn. ");
         fechaIn = Entrada.cadena();
@@ -180,7 +178,7 @@ public class Consola {
         System.out.print("Introduce el número de personas. ");
         numeroPersonas = Entrada.entero();
 
-        return new Reserva(leerHuesped(),leerHabitacion(),leerRegimen(),fechaInicioReserva,fechaFinReserva,numeroPersonas);
+        return new Reserva(huesped,habitacion,regimen,fechaInicioReserva,fechaFinReserva,numeroPersonas);
 
     }
 

@@ -35,6 +35,7 @@ public class Huespedes {
        return copiaProfundaHuesped();
     }
     private Huesped[] copiaProfundaHuesped(){
+
         Huesped[] copiaHuesped = new Huesped[capacidad];
         for (int i =0; !tamanoSuperado(i);i++){
             copiaHuesped[i] =new Huesped(coleccionHuesped[i]);

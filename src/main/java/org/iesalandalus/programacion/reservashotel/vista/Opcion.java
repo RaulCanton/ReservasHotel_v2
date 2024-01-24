@@ -28,13 +28,10 @@ public enum Opcion {
     }
 
     public static Opcion getOpcionSegunOrdinal(int ordinal) {
-        if (esOrdinalValido(ordinal))
+        if ((ordinal >= 0 && ordinal <= values().length - 1))
             return values()[ordinal];
         else
             throw new IllegalArgumentException("Ordinal de la opción no válido");
     }
 
-    public static boolean esOrdinalValido(int ordinal) {
-        return (ordinal >= 0 && ordinal <= values().length - 1);
-    }
 }
