@@ -35,7 +35,7 @@ public class Habitacion {
     private void setPlanta(int planta){
 
         if (planta<MIN_NUMERO_PLANTA || planta>MAX_NUMERO_PLANTA){
-            throw new IllegalArgumentException("ERROR: No se puede establecer como planta de una habitaci贸n un valor menor que 1 ni mayor que 3.");
+            throw new IllegalArgumentException("ERROR: No se puede establecer como planta de una habitaci髇 un valor menor que 1 ni mayor que 3.");
         }
         else {
             this.planta = planta;
@@ -49,7 +49,7 @@ public class Habitacion {
     private void setPuerta(int puerta) {
 
         if (puerta < MIN_NUMERO_PUERTA || puerta > MAX_NUMERO_PUERTA) {
-            throw new IllegalArgumentException("ERROR: No se puede establecer como puerta de una habitaci贸n un valor menor que 0 ni mayor que 14.");
+            throw new IllegalArgumentException("ERROR: No se puede establecer como puerta de una habitaci髇 un valor menor que 0 ni mayor que 14.");
         }
             this.puerta = puerta;
     }
@@ -61,7 +61,7 @@ public class Habitacion {
     public void setPrecio(double precio) {
 
             if (precio < MIN_PRECIO_HABITACION || precio > MAX_PRECIO_HABITACION) {
-                throw new IllegalArgumentException("ERROR: No se puede establecer como precio de una habitaci贸n un valor menor que 40.0 ni mayor que 150.0.");
+                throw new IllegalArgumentException("ERROR: No se puede establecer como precio de una habitaci髇 un valor menor que 40.0 ni mayor que 150.0.");
             }
         this.precio=precio;
     }
@@ -71,7 +71,7 @@ public class Habitacion {
     }
 
     public void setTipoHabitacion(TipoHabitacion tipoHabitacion){
-        Objects.requireNonNull(tipoHabitacion,"ERROR: No se puede establecer un tipo de habitaci贸n nula.");
+        Objects.requireNonNull(tipoHabitacion,"ERROR: No se puede establecer un tipo de habitaci髇 nula.");
         this.tipoHabitacion=tipoHabitacion;
 
 
@@ -92,7 +92,7 @@ public class Habitacion {
     public Habitacion(Habitacion habitacion){
 
         if (habitacion==null) {
-            throw new NullPointerException("ERROR: No es posible copiar una habitaci贸n nula.");
+            throw new NullPointerException("ERROR: No es posible copiar una habitaci髇 nula.");
         }
             setPlanta(habitacion.getPlanta());
             setPrecio(habitacion.getPrecio());
@@ -115,7 +115,7 @@ public class Habitacion {
     }
 
     public String toString (){
-        return String.format("identificador=%s (%d-%d), precio habitaci贸n=%s, tipo habitaci贸n=%s",
+        return String.format("identificador=%s (%d-%d), precio habitaci髇=%s, tipo habitaci髇=%s",
                 getIdentificador(),getPlanta(), getPuerta(), getPrecio(), getTipoHabitacion());
     }
 

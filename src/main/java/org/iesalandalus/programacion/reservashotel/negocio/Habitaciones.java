@@ -15,7 +15,7 @@ public class Habitaciones {
 
     public Habitaciones (int capacidad) {
         if (capacidad <=0){
-            throw new IllegalArgumentException("ERROR: La Habitaci贸n debe ser mayor que cero.");
+            throw new IllegalArgumentException("ERROR: La Habitaci髇 debe ser mayor que cero.");
         }
 
         this.capacidad=capacidad;
@@ -44,17 +44,17 @@ public class Habitaciones {
     }
     public void insertar (Habitacion habitacion) throws OperationNotSupportedException {
         if (habitacion == null) {
-            throw new NullPointerException("ERROR: No se puede insertar una habitaci贸n nula.");
+            throw new NullPointerException("ERROR: No se puede insertar una habitaci髇 nula.");
         }
         int indice=buscarIndice(habitacion);
         if (capacidadSuperada(indice)){
-            throw new OperationNotSupportedException("ERROR: No se aceptan m谩s habitaciones.");
+            throw new OperationNotSupportedException("ERROR: No se aceptan m醩 habitaciones.");
         }
         if (tamanoSuperado(indice)){
             coleccionHabitacion[indice]= new Habitacion(habitacion);
             tamano++;
         }else {
-            throw new OperationNotSupportedException("ERROR:Ya existe una habitaci贸n con esos datos.");
+            throw new OperationNotSupportedException("ERROR:Ya existe una habitaci髇 con esos datos.");
         }
     }
 
@@ -65,7 +65,7 @@ public class Habitaciones {
         int indice=-1;
         boolean habitacionEncontrado = false;
         if (habitacion == null) {
-            throw new NullPointerException("ERROR: No se puede buscar el indice de una habitaci贸n nula.");
+            throw new NullPointerException("ERROR: No se puede buscar el indice de una habitaci髇 nula.");
         }
         while (!tamanoSuperado(indice) && !habitacionEncontrado) {
             if (coleccionHabitacion[indice].equals(habitacion)) {
@@ -88,7 +88,7 @@ public class Habitaciones {
     }
     public Habitacion buscar (Habitacion habitacion){
         if (habitacion == null) {
-            throw new NullPointerException("ERROR: No se puede buscar una habitaci贸n nula.");
+            throw new NullPointerException("ERROR: No se puede buscar una habitaci髇 nula.");
         }
 
         int indice=buscarIndice(habitacion);
@@ -103,13 +103,13 @@ public class Habitaciones {
 
     public void borrar (Habitacion habitacion) throws OperationNotSupportedException {
         if (habitacion == null) {
-            throw new NullPointerException("ERROR: No se puede borrar una habitaci贸n nula.");
+            throw new NullPointerException("ERROR: No se puede borrar una habitaci髇 nula.");
         }
 
 
         int indice = buscarIndice(habitacion);
         if (tamanoSuperado(indice)) {
-            throw new OperationNotSupportedException("ERROR:No existe ning煤na habitaci贸n con esos datos.");
+            throw new OperationNotSupportedException("ERROR:No existe ning鷑a habitaci髇 con esos datos.");
         } else {
             despalzarUnaPosicionHaciaLaIzquierda(indice);
         }

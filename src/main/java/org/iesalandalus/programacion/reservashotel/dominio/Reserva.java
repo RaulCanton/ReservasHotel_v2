@@ -29,7 +29,7 @@ public class Reserva {
     }
 
     public void setHuesped(Huesped huesped) {
-        Objects.requireNonNull(huesped, "ERROR: El hu√©sped de una reserva no puede ser nulo.");
+        Objects.requireNonNull(huesped, "ERROR: El huÈsped de una reserva no puede ser nulo.");
         this.huesped = huesped;
     }
 
@@ -46,7 +46,7 @@ public class Reserva {
     }
 
     public void setRegimen(Regimen regimen) {
-        Objects.requireNonNull(regimen, "ERROR: El r√©gimen de una reserva no puede ser nulo.");
+        Objects.requireNonNull(regimen, "ERROR: El rÈgimen de una reserva no puede ser nulo.");
         this.regimen = regimen;
     }
 
@@ -61,7 +61,7 @@ public class Reserva {
         LocalDate diaActual= LocalDate.now();
         LocalDate date=diaActual.plus(Period.ofMonths(MAX_NUMERO_MESES_RESERVAS));
         if(diaActual.isAfter(fechaInicioreserva)){
-            throw new DateTimeException("ERROR: La fecha de inicio de la reserva no puede ser anterior al d√≠a de hoy.");
+            throw new DateTimeException("ERROR: La fecha de inicio de la reserva no puede ser anterior al dÌa de hoy.");
         }
         if (fechaInicioReserva.isAfter(date)){
             throw new DateTimeException("ERROR: La fecha de inicio de la reserva no puede ser posterior a seis meses.");
@@ -115,7 +115,7 @@ public class Reserva {
         }
         LocalDateTime diaHoraOut =LocalDateTime.now().plusHours(MAX_HORAS_POSTERIOR_CHECKOUT);
         if (checkOut.isAfter(ChronoLocalDate.from(diaHoraOut))){
-            throw new IllegalArgumentException(("ERROR: El checkout de una reserva puede ser como m√°ximo 12 horas despu√©s de la fecha de fin de la reserva."));
+            throw new IllegalArgumentException(("ERROR: El checkout de una reserva puede ser como m·ximo 12 horas despuÈs de la fecha de fin de la reserva."));
         }
         this.checkOut = checkOut;
     }
@@ -199,7 +199,7 @@ public class Reserva {
     }
 
     public String toString(){
-        return String.format("Huesped: %s %s Habitaci√≥n:%s - %s Fecha Inicio Reserva: %s Fecha Fin Reserva: %s Checkin: %s Checkout: %s Precio: %.2f Personas: %d",getHuesped().getNombre(), getHuesped().getDni(),
+        return String.format("Huesped: %s %s HabitaciÛn:%s - %s Fecha Inicio Reserva: %s Fecha Fin Reserva: %s Checkin: %s Checkout: %s Precio: %.2f Personas: %d",getHuesped().getNombre(), getHuesped().getDni(),
                 getHabitacion().getIdentificador(),getHabitacion().getTipoHabitacion(), getFechaInicioReserva().format(DateTimeFormatter.ofPattern(FORMATO_FECHA_RESERVA)),
                 getFechaFinReserva(), getPrecio());
 

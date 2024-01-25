@@ -168,6 +168,57 @@ private static void borrarHuesped() throws OperationNotSupportedException{
 
 
     public static void main(String[] args) {
+        Consola.mostrarMenu();
+        Consola.elegirOpcion();
+
+/*
+       switch (){
+       case 0:
+
+          break;
+        case 1:
+            insertarHuesped();
+            break;
+        case (2):
+            buscarHuesped();
+            break;
+        case (3):
+            borrarHuesped();
+            break;
+        case 4:
+            mostrarHuespedes();
+            break;
+        case 5:
+            insertarHabitacion();
+            break;
+        case 6:
+            buscarHabitacion();
+            break;
+        case 7:
+            borrarHabitacion();
+            break;
+        case (8):
+           mostrarHabitaciones();
+           break;
+        case (9):
+           insertarReserva();
+           break;
+        case 10:
+            anularReserva();
+            break;
+        case 11:
+            mostrarReservas();
+            break;
+        case 12:
+            consultarDisponibilidad();
+            break;
+
+        }
+       }
+
+
+       }
+*/
         System.out.println("Hasta luego!!!!");
     }
 }

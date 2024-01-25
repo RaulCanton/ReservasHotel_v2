@@ -17,6 +17,7 @@ public class Consola {
     }
 
     public static void mostrarMenu(){
+
         for( Opcion opcion:Opcion.values()){
             System.out.println(opcion);
         }
@@ -30,40 +31,42 @@ public class Consola {
 
         } while (ordinalOpcion >= 0 && ordinalOpcion <= values().length - 1);
         return Opcion.getOpcionSegunOrdinal(ordinalOpcion);
+
     }
 
     public static Huesped leerHuesped() {
-        Huesped huesped = null;
-        String nombre;
-        String dni;
-        String telefono;
-        String correo;
 
-        String fechaNacimiento;
+            Huesped huesped = null;
+            String nombre;
+            String dni;
+            String telefono;
+            String correo;
 
-        do {
-            System.out.print("Introduce el nombre del huésped: ");
-            nombre = Entrada.cadena();
-        } while (nombre.equals(""));
-        do {
-            System.out.print("Introduce el dni del cliente: ");
-            dni = Entrada.cadena();
-        } while (dni.equals(""));
-        do {
-            System.out.print("Introduce el teléfono del huésped: ");
-            telefono = Entrada.cadena();
-        }while (telefono == null || telefono.equals(""));
-        do {
-            System.out.print("Introduce el correo del huésped: ");
-            correo = Entrada.cadena();
-        }while (correo == null || correo.equals(""));
-        do {
-            System.out.print("Introduce la fecha de nacimiento del huésped: ");
-            fechaNacimiento = Entrada.cadena();
-        }while (fechaNacimiento == null || fechaNacimiento.equals(""));
+            String fechaNacimiento;
 
-        LocalDate formatoDia = LocalDate.parse(fechaNacimiento);
-        return  new Huesped(nombre,dni,telefono,correo,formatoDia);
+            do {
+                System.out.print("Introduce el nombre del huésped: ");
+                nombre = Entrada.cadena();
+            } while (nombre.equals(""));
+            do {
+                System.out.print("Introduce el dni del cliente: ");
+                dni = Entrada.cadena();
+            } while (dni.equals(""));
+            do {
+                System.out.print("Introduce el teléfono del huésped: ");
+                telefono = Entrada.cadena();
+            } while (telefono == null || telefono.equals(""));
+            do {
+                System.out.print("Introduce el correo del huésped: ");
+                correo = Entrada.cadena();
+            } while (correo == null || correo.equals(""));
+            do {
+                System.out.print("Introduce la fecha de nacimiento del huésped: ");
+                fechaNacimiento = Entrada.cadena();
+            } while (fechaNacimiento == null || fechaNacimiento.equals(""));
+
+            LocalDate formatoDia = LocalDate.parse(fechaNacimiento);
+            return new Huesped(nombre, dni, telefono, correo, formatoDia);
 
     }
     public static Huesped leerClientePorDni(){

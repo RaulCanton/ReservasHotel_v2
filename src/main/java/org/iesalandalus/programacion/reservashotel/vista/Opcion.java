@@ -22,16 +22,16 @@ public enum Opcion {
     }
 
 
-    @Override
-    public String toString() {
-        return String.format("%d.- %s", ordinal(), mensajeAMostrar);
-    }
+
 
     public static Opcion getOpcionSegunOrdinal(int ordinal) {
         if ((ordinal >= 0 && ordinal <= values().length - 1))
             return values()[ordinal];
         else
-            throw new IllegalArgumentException("Ordinal de la opción no válido");
+            throw new IllegalArgumentException("Ordinal de la opción no válida");
     }
-
+    @Override
+    public String toString() {
+        return String.format("%d.- %s", ordinal(), mensajeAMostrar);
+    }
 }

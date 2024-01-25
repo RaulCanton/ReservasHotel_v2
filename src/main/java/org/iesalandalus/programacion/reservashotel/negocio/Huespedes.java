@@ -51,17 +51,17 @@ public class Huespedes {
     }
     public void insertar (Huesped huesped) throws OperationNotSupportedException{
         if (huesped == null) {
-            throw new NullPointerException("ERROR: No se puede insertar un huÃ©sped nulo.");
+            throw new NullPointerException("ERROR: No se puede insertar un huésped nulo.");
         }
         int indice=buscarIndice(huesped);
         if (capacidadSuperada(indice)){
-            throw new OperationNotSupportedException("ERROR: No se aceptan mÃ¡s huÃ©spedes.");
+            throw new OperationNotSupportedException("ERROR: No se aceptan más huéspedes.");
         }
         if (tamanoSuperado(indice)){
             coleccionHuesped[indice]= new Huesped(huesped);
             tamano++;
         }else {
-            throw new OperationNotSupportedException("ERROR:Y existe un huÃ©sped con esos datos.");
+            throw new OperationNotSupportedException("ERROR:Y existe un huésped con esos datos.");
         }
     }
 
@@ -72,7 +72,7 @@ public class Huespedes {
             int indice=-1;
             boolean huespedEncontrado = false;
         if (huesped == null) {
-            throw new NullPointerException("ERROR: No se puede buscar el indice de un huÃ©sped nulo.");
+            throw new NullPointerException("ERROR: No se puede buscar el indice de un huésped nulo.");
         }
           while (!tamanoSuperado(indice) && !huespedEncontrado) {
             if (coleccionHuesped[indice].equals(huesped)) {
@@ -96,7 +96,7 @@ public class Huespedes {
     public Huesped buscar (Huesped huesped){
 
         if (huesped == null) {
-            throw new NullPointerException("ERROR: No se puede buscar un huÃ©sped nulo.");
+            throw new NullPointerException("ERROR: No se puede buscar un huésped nulo.");
         }
 
         int indice=buscarIndice(huesped);
@@ -110,13 +110,13 @@ public class Huespedes {
 
     public void borrar (Huesped huesped) throws OperationNotSupportedException {
         if (huesped == null) {
-            throw new NullPointerException("ERROR: No se puede borrar un huÃ©sped nulo.");
+            throw new NullPointerException("ERROR: No se puede borrar un huésped nulo.");
         }
 
 
         int indice = buscarIndice(huesped);
         if (tamanoSuperado(indice)) {
-            throw new OperationNotSupportedException("ERROR:No existe ningÃºn huÃ©sped con ese nombre.");
+            throw new OperationNotSupportedException("ERROR:No existe ningún huésped con ese nombre.");
         } else {
             despalzarUnaPosicionHaciaLaIzquierda(indice);
         }
