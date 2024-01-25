@@ -19,6 +19,8 @@ private static Reservas reservas;
 private static Habitaciones habitaciones;
 private static Huespedes huespedes;
 
+
+
 private static Opcion ejecutarOpcion(Opcion opcion){
     int numopcion;
     return Consola.elegirOpcion();
@@ -31,12 +33,13 @@ private static Huesped insertarHuesped(){
         return huesped1;
     } catch (OperationNotSupportedException e){
         System.out.println("No se puede insertar el cliente.");
+        return null;
     }
-    return null;
+
 }
 
 
-private static Huesped buscarHuesped() throws OperationNotSupportedException {
+private static Huesped buscarHuesped() {
 
     Huesped huesped1;
     do {
@@ -44,11 +47,9 @@ private static Huesped buscarHuesped() throws OperationNotSupportedException {
     } while (huesped1 == null);
 
     Huesped huesped2 = huespedes.buscar(huesped1);
-    if (huesped2 == null) {
-        throw new OperationNotSupportedException("El dni buscado no es de un cliente.");
-    } else {
+
         return huesped2;
-    }
+
 }
 
 private static void borrarHuesped() throws OperationNotSupportedException{
@@ -59,18 +60,16 @@ private static void borrarHuesped() throws OperationNotSupportedException{
     } while (huesped1 == null);
     Huesped huesped2= huespedes.buscar(huesped1);
 
-    if (huesped2==null)
-        throw new OperationNotSupportedException("El dni buscado no es de un cliente.");
-    else
-    {
-        huespedes.borrar(huesped2);
-        System.out.println("Se ha borrado el huésped.");
-    }
+    huespedes.borrar(huesped2);
+    System.out.println("Se ha borrado el huésped.");
+
 }
     private static void mostrarHuespedes() {
+
         Huesped[] muestraHuespedes = huespedes.get();
+
         if (muestraHuespedes.length == 0) {
-            throw new IllegalArgumentException ("No hay huéspedes que mostrar.");
+            throw new IllegalArgumentException("No hay huéspedes que mostrar.");
 
         } else {
             System.out.println("Listado de habitaciones:");
@@ -78,6 +77,7 @@ private static void borrarHuesped() throws OperationNotSupportedException{
                 System.out.println(huesped);
             }
         }
+
     }
     private static Habitacion insertarHabitacion(){
         try {
@@ -90,18 +90,15 @@ private static void borrarHuesped() throws OperationNotSupportedException{
         return null;
     }
 
-    private static Habitacion buscarHabitacion() throws OperationNotSupportedException {
+    private static Habitacion buscarHabitacion() {
         Habitacion habitacion1;
         do {
             habitacion1 = new Habitacion(Consola.leerHabitacionPorIdentificador());
         } while (habitacion1 == null);
 
         Habitacion habitacion2 = habitaciones.buscar(habitacion1);
-        if (habitacion2 == null) {
-            throw new OperationNotSupportedException("El identificador no coincide con ninguna habitación");
-        } else {
             return habitacion2;
-        }
+
     }
 
     private static void borrarHabitacion() throws OperationNotSupportedException{
@@ -112,13 +109,9 @@ private static void borrarHuesped() throws OperationNotSupportedException{
         } while (habitacion1 == null);
         Habitacion habitacion2= habitaciones.buscar(habitacion1);
 
-        if (habitacion2==null)
-            throw new OperationNotSupportedException("El identificador no coincide con ninguna habitación");
-        else
-        {
-            habitaciones.borrar(habitacion2);
-            System.out.println("Se ha borrado la habitación.");
-        }
+        habitaciones.borrar(habitacion2);
+        System.out.println("Se ha borrado la habitación.");
+
     }
 
     private static void mostrarHabitaciones() {
@@ -167,58 +160,58 @@ private static void borrarHuesped() throws OperationNotSupportedException{
 
 
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws OperationNotSupportedException {
+        Reservas reservas=new Reservas(CAPACIDAD);
+        Huespedes huespedes=new Huespedes(CAPACIDAD);
+        Habitaciones habitacion=new Habitaciones(CAPACIDAD);
+
         Consola.mostrarMenu();
-        Consola.elegirOpcion();
+        Opcion opcion = Consola.elegirOpcion();
+        ejecutarOpcion(opcion);
 
-/*
-       switch (){
-       case 0:
 
+       switch (opcion){
+       case SALIR:
+           System.out.println("Hasta luego!!!!");
           break;
-        case 1:
+        case INSERTAR_HUESPED:
             insertarHuesped();
             break;
-        case (2):
+        case BUSCAR_HUESPED:
             buscarHuesped();
             break;
-        case (3):
+        case BORRAR_HUESPED:
             borrarHuesped();
             break;
-        case 4:
+        case MOSTRAR_HUESPEDES:
             mostrarHuespedes();
             break;
-        case 5:
+        case INSERTAR_HABITACION:
             insertarHabitacion();
             break;
-        case 6:
+        case BUSCAR_HABITACION:
             buscarHabitacion();
             break;
-        case 7:
+        case BORRAR_HABITACION:
             borrarHabitacion();
             break;
-        case (8):
+        case MOSTRAR_HABITACIONES:
            mostrarHabitaciones();
            break;
-        case (9):
+        case INSERTAR_RESERVA:
            insertarReserva();
            break;
-        case 10:
+        case ANULAR_RESERVA:
             anularReserva();
             break;
-        case 11:
+        case MOSTRAR_RESERVAS:
             mostrarReservas();
             break;
-        case 12:
+        case CONSULTAR_DISPONIBILIDAD:
             consultarDisponibilidad();
             break;
-
-        }
        }
 
 
-       }
-*/
-        System.out.println("Hasta luego!!!!");
     }
 }

@@ -29,7 +29,7 @@ public class Consola {
             System.out.println("Elige una opción: ");
             ordinalOpcion = Entrada.entero();
 
-        } while (ordinalOpcion >= 0 && ordinalOpcion <= values().length - 1);
+        } while (ordinalOpcion <= 0 || ordinalOpcion >= values().length - 1);
         return Opcion.getOpcionSegunOrdinal(ordinalOpcion);
 
     }
