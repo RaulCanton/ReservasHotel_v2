@@ -146,6 +146,11 @@ private static void borrarHuesped() throws OperationNotSupportedException{
         }
     }
 
+    private static void listarReservas() {}
+    private static void getReservasAnulables() {}
+    private static void anularReserva() {}
+
+    private static void consultarDisponibilidad () {}
 
     private static void mostrarReservas() {
         Reserva[] muestraReserva = reservas.get();
@@ -159,6 +164,8 @@ private static void borrarHuesped() throws OperationNotSupportedException{
             }
         }
     }
+
+
 
     public static void main(String[] args) {
         System.out.println("Hasta luego!!!!");
