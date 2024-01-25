@@ -117,7 +117,7 @@ public class Consola {
             precio = Entrada.entero();
         }while (precio <40 || precio>150);
         String identificador=(String.format("%d%d",planta,puerta));
-        return new Habitacion(planta,puerta,precio,leerTipoHabitacion(),identificador);
+        return new Habitacion (planta,puerta,precio,leerTipoHabitacion(),identificador);
 
     }
     public static Habitacion leerHabitacionPorIdentificador(){

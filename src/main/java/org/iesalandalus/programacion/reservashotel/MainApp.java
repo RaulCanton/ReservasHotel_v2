@@ -32,13 +32,12 @@ private static Huesped insertarHuesped(){
     } catch (OperationNotSupportedException e){
         System.out.println("No se puede insertar el cliente.");
     }
-
-
     return null;
 }
 
 
 private static Huesped buscarHuesped() throws OperationNotSupportedException {
+
     Huesped huesped1;
     do {
         huesped1 = new Huesped(Consola.leerClientePorDni());
