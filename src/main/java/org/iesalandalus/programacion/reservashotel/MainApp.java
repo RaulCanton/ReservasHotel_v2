@@ -67,6 +67,18 @@ private static void borrarHuesped() throws OperationNotSupportedException{
         System.out.println("Se ha borrado el huésped.");
     }
 }
+    private static void mostrarHuespedes() {
+        Huesped[] muestraHuespedes = huespedes.get();
+        if (muestraHuespedes.length == 0) {
+            throw new IllegalArgumentException ("No hay huéspedes que mostrar.");
+
+        } else {
+            System.out.println("Listado de habitaciones:");
+            for (Huesped huesped : muestraHuespedes) {
+                System.out.println(huesped);
+            }
+        }
+    }
     private static Habitacion insertarHabitacion(){
         try {
             Habitacion habitacion1 = Consola.leerHabitacion();
@@ -108,6 +120,20 @@ private static void borrarHuesped() throws OperationNotSupportedException{
             System.out.println("Se ha borrado la habitación.");
         }
     }
+
+    private static void mostrarHabitaciones() {
+        Habitacion[] muestraHabitaciones = habitaciones.get();
+        if (muestraHabitaciones.length == 0) {
+            throw new IllegalArgumentException ("No hay habitaciones que mostrar.");
+
+        } else {
+            System.out.println("Listado de habitaciones:");
+            for (Habitacion habitacion : muestraHabitaciones) {
+                System.out.println(habitacion);
+            }
+        }
+    }
+
     private static Reserva insertarReserva(){
 
         try {
@@ -117,6 +143,20 @@ private static void borrarHuesped() throws OperationNotSupportedException{
         } catch (OperationNotSupportedException e) {
             System.out.println("No se puede crear la reserva");
             return null;
+        }
+    }
+
+
+    private static void mostrarReservas() {
+        Reserva[] muestraReserva = reservas.get();
+        if (muestraReserva.length == 0) {
+            throw new IllegalArgumentException ("No hay reservas que mostrar.");
+
+        } else {
+            System.out.println("Listado de habitaciones:");
+            for (Reserva reserva : muestraReserva) {
+                System.out.println(reserva);
+            }
         }
     }
 
