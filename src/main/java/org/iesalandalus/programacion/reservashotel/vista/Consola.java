@@ -6,6 +6,7 @@ import org.iesalandalus.programacion.utilidades.Entrada;
 
 import javax.naming.OperationNotSupportedException;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
@@ -185,7 +186,20 @@ public class Consola {
         return new Reserva(huesped,habitacion,regimen,fechaInicioReserva,fechaFinReserva,numeroPersonas);
 
     }
+    public static LocalDateTime leerFechaHora(String mensaje){
+        LocalDateTime fechaHora=null;
 
+        do {
+            mensaje = "Introduce la fecha y la hora";
+            System.out.println(mensaje);
+            String fechaHoraTiempo = Entrada.cadena();
+
+            DateTimeFormatter formatoFecha = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+            fechaHora = LocalDateTime.parse(fechaHoraTiempo, formatoFecha);
+        }while (fechaHora==null);
+
+        return fechaHora;
+    }
 }
 
 
