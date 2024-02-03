@@ -29,7 +29,7 @@ public static void main(String[] args)  {
         }while (Consola.elegirOpcion() !=Opcion.SALIR);
 
 }
-
+// esto es una prueba
 private static void ejecutarOpcion(Opcion opcion){
 
     switch (opcion) {
