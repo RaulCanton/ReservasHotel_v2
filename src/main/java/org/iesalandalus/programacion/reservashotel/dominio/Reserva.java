@@ -24,6 +24,27 @@ public class Reserva {
     private double precio;
     private int numeroPersonas;
 
+    public Reserva(Huesped huesped,Habitacion habitacion,Regimen regimen,
+                   LocalDate fechaInicioReserva,LocalDate fechaFinReserva,int numeroPersonas) {
+        setHuesped(huesped);
+        setHabitacion(habitacion);
+        setRegimen(regimen);
+        setFechaInicioReserva(fechaInicioReserva);
+        setFechaFinReserva(fechaFinReserva);
+        setNumeroPersonas(numeroPersonas);
+    }
+
+    public Reserva(Reserva reserva){
+        if (reserva==null) {
+            throw new NullPointerException("ERROR: No es posible copiar una reserva nula.");
+        }
+        setHuesped(reserva.getHuesped());
+        setHabitacion(reserva.getHabitacion());
+        setRegimen(reserva.getRegimen());
+        setFechaInicioReserva(reserva.getFechaInicioReserva());
+        setFechaFinReserva(reserva.getFechaFinReserva());
+    }
+
     public Huesped getHuesped() {
         return huesped;
     }
@@ -124,7 +145,7 @@ public class Reserva {
         return precio;
     }
 
-    private void setPrecio(double precio) {
+    private void setPrecio() {
         if(habitacion.getTipoHabitacion()==TipoHabitacion.SIMPLE){
             precio = precio+(TipoHabitacion.SIMPLE.numeroMaximoPersonas *50);
         }
@@ -149,8 +170,6 @@ public class Reserva {
         if (regimen==Regimen.PENSION_COMPLETA){
             this.precio=precio+(Regimen.PENSION_COMPLETA.getIncrementoPrecio()*numeroPersonas);
         }
-
-
     }
 
     public int getNumeroPersonas() {
@@ -158,31 +177,7 @@ public class Reserva {
     }
 
     public void setNumeroPersonas(int numeroPersonas) {
-
-
-
         this.numeroPersonas = numeroPersonas;
-    }
-
-    public Reserva(Huesped huesped,Habitacion habitacion,Regimen regimen,
-                   LocalDate fechaInicioReserva,LocalDate fechaFinReserva,int numeroPersonas) {
-      setHuesped(huesped);
-      setHabitacion(habitacion);
-      setRegimen(regimen);
-      setFechaInicioReserva(fechaInicioReserva);
-      setFechaFinReserva(fechaFinReserva);
-      setNumeroPersonas(numeroPersonas);
-    }
-
-    public Reserva(Reserva reserva){
-        if (reserva==null) {
-            throw new NullPointerException("ERROR: No es posible copiar una reserva nula.");
-        }
-        setHuesped(reserva.huesped);
-        setHabitacion(reserva.habitacion);
-        setRegimen(reserva.regimen);
-        setFechaInicioReserva(reserva.fechaInicioReserva);
-        setFechaFinReserva(reserva.fechaFinReserva);
     }
 
     @Override
@@ -204,9 +199,6 @@ public class Reserva {
                 getFechaFinReserva(), getPrecio());
 
     }
-
-
-
 }
 
 

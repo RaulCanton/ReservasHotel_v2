@@ -29,14 +29,13 @@ public class Consola {
             System.out.println("Elige una opción: ");
             ordinalOpcion = Entrada.entero();
 
-        } while (ordinalOpcion <= 0 || ordinalOpcion >= values().length - 1);
-        return Opcion.getOpcionSegunOrdinal(ordinalOpcion);
+        } while (ordinalOpcion <= 0 && ordinalOpcion >= values().length - 1);
+        return Opcion.values()[ordinalOpcion];
 
     }
 
     public static Huesped leerHuesped() {
 
-            Huesped huesped = null;
             String nombre;
             String dni;
             String telefono;
@@ -47,10 +46,12 @@ public class Consola {
             do {
                 System.out.print("Introduce el nombre del huésped: ");
                 nombre = Entrada.cadena();
+
             } while (nombre.equals(""));
             do {
                 System.out.print("Introduce el dni del cliente: ");
                 dni = Entrada.cadena();
+
             } while (dni.equals(""));
             do {
                 System.out.print("Introduce el teléfono del huésped: ");
@@ -65,8 +66,8 @@ public class Consola {
                 fechaNacimiento = Entrada.cadena();
             } while (fechaNacimiento == null || fechaNacimiento.equals(""));
 
-            LocalDate formatoDia = LocalDate.parse(fechaNacimiento);
-            return new Huesped(nombre, dni, telefono, correo, formatoDia);
+            //return huesped;
+           return new Huesped (nombre,dni,telefono,correo,LocalDate.parse(fechaNacimiento));
 
     }
     public static Huesped leerClientePorDni(){
@@ -186,3 +187,14 @@ public class Consola {
     }
 
 }
+
+
+// return new Huesped(huesped);
+            /*LocalDate formatoDia = LocalDate.parse(fechaNacimiento);
+                Huesped huesped1=new Huesped();
+                    huesped1.setNombre(nombre);
+                    huesped1.setDni(dni);
+                    huesped1.setCorreo(correo);
+                    huesped1.setTelefono(telefono);
+                    huesped1.setFechaNacimiento(fechaNacimiento);
+            return Huesped huesped1;*/

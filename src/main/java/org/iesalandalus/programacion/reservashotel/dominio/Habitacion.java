@@ -18,10 +18,33 @@ public class Habitacion {
     private TipoHabitacion tipoHabitacion;
 
 
+    public Habitacion(int planta, int puerta, double precio, TipoHabitacion tipoHabitacion,String identificador){
+
+
+        setPlanta(planta);
+        setPrecio(precio);
+        setPuerta(puerta);
+        setTipoHabitacion(tipoHabitacion);
+        setIdentificador(String.format("%d%d",getPlanta(),getPuerta()));
+    }
+
+    public Habitacion(Habitacion habitacion){
+
+        if (habitacion==null) {
+            throw new NullPointerException("ERROR: No es posible copiar una habitación nula.");
+        }
+        setPlanta(habitacion.getPlanta());
+        setPrecio(habitacion.getPrecio());
+        setPuerta(habitacion.getPuerta());
+        setTipoHabitacion(habitacion.getTipoHabitacion());
+        setIdentificador(habitacion.getIdentificador());
+    }
+
+
     public String getIdentificador(){
        return identificador;
     }
-    private void setIdentificador(String identificador){
+    public void setIdentificador(String identificador){
         if (identificador==null){
             throw new IllegalArgumentException("El identificador no es correcto.");
         }
@@ -75,30 +98,6 @@ public class Habitacion {
         this.tipoHabitacion=tipoHabitacion;
 
 
-    }
-
-
-
-    public Habitacion(int planta, int puerta, double precio, TipoHabitacion tipoHabitacion,String identificador){
-
-
-            setPlanta(planta);
-            setPrecio(precio);
-            setPuerta(puerta);
-            setTipoHabitacion(tipoHabitacion);
-            setIdentificador(String.format("%d%d",getPlanta(),getPuerta()));
-    }
-
-    public Habitacion(Habitacion habitacion){
-
-        if (habitacion==null) {
-            throw new NullPointerException("ERROR: No es posible copiar una habitación nula.");
-        }
-            setPlanta(habitacion.getPlanta());
-            setPrecio(habitacion.getPrecio());
-            setPuerta(habitacion.getPuerta());
-            setTipoHabitacion(habitacion.getTipoHabitacion());
-            setIdentificador(habitacion.getIdentificador());
     }
 
     @Override

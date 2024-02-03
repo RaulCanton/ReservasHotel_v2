@@ -19,21 +19,70 @@ private static Reservas reservas;
 private static Habitaciones habitaciones;
 private static Huespedes huespedes;
 
-
-
-private static Opcion ejecutarOpcion(Opcion opcion){
-    int numopcion;
-    return Consola.elegirOpcion();
+public static void main(String[] args)  {
+        Reservas reservas=new Reservas(CAPACIDAD);
+        Huespedes huespedes=new Huespedes(CAPACIDAD);
+        Habitaciones habitacion=new Habitaciones(CAPACIDAD);
+        do {
+            Consola.mostrarMenu();
+            ejecutarOpcion(Consola.elegirOpcion());
+        }while (Consola.elegirOpcion() !=Opcion.SALIR);
 
 }
-private static Huesped insertarHuesped(){
+
+private static void ejecutarOpcion(Opcion opcion){
+
+    switch (opcion) {
+        case SALIR:
+            System.out.println("Hasta luego!!!!");
+            break;
+        case INSERTAR_HUESPED:
+            insertarHuesped();
+            break;
+        case BUSCAR_HUESPED:
+            buscarHuesped();
+            break;
+        case BORRAR_HUESPED:
+            //borrarHuesped();
+            break;
+        case MOSTRAR_HUESPEDES:
+            mostrarHuespedes();
+            break;
+        case INSERTAR_HABITACION:
+            insertarHabitacion();
+            break;
+        case BUSCAR_HABITACION:
+            buscarHabitacion();
+            break;
+        case BORRAR_HABITACION:
+            //  borrarHabitacion();
+            break;
+        case MOSTRAR_HABITACIONES:
+            mostrarHabitaciones();
+            break;
+        case INSERTAR_RESERVA:
+            insertarReserva();
+            break;
+        case ANULAR_RESERVA:
+            anularReserva();
+            break;
+        case MOSTRAR_RESERVAS:
+            mostrarReservas();
+            break;
+        case CONSULTAR_DISPONIBILIDAD:
+            consultarDisponibilidad();
+            break;
+    }
+
+}
+private static void insertarHuesped(){
     try {
         Huesped huesped1 = Consola.leerHuesped();
         huespedes.insertar(huesped1);
-        return huesped1;
+
     } catch (OperationNotSupportedException e){
         System.out.println("No se puede insertar el cliente.");
-        return null;
+
     }
 
 }
@@ -79,15 +128,15 @@ private static void borrarHuesped() throws OperationNotSupportedException{
         }
 
     }
-    private static Habitacion insertarHabitacion(){
+    private static void insertarHabitacion(){
         try {
             Habitacion habitacion1 = Consola.leerHabitacion();
             habitaciones.insertar(habitacion1);
-            return habitacion1;
+
         } catch (OperationNotSupportedException e){
             System.out.println("No se puede insertar la habitación.");
         }
-        return null;
+
     }
 
     private static Habitacion buscarHabitacion() {
@@ -127,15 +176,15 @@ private static void borrarHuesped() throws OperationNotSupportedException{
         }
     }
 
-    private static Reserva insertarReserva(){
+    private static void insertarReserva(){
 
         try {
             Reserva reserva1 = Consola.leerReserva();
             reservas.insertar(reserva1);
-            return reserva1;
+
         } catch (OperationNotSupportedException e) {
             System.out.println("No se puede crear la reserva");
-            return null;
+
         }
     }
 
@@ -156,62 +205,5 @@ private static void borrarHuesped() throws OperationNotSupportedException{
                 System.out.println(reserva);
             }
         }
-    }
-
-
-
-    public static void main(String[] args) throws OperationNotSupportedException {
-        Reservas reservas=new Reservas(CAPACIDAD);
-        Huespedes huespedes=new Huespedes(CAPACIDAD);
-        Habitaciones habitacion=new Habitaciones(CAPACIDAD);
-
-        Consola.mostrarMenu();
-        Opcion opcion = Consola.elegirOpcion();
-        ejecutarOpcion(opcion);
-
-
-       switch (opcion){
-       case SALIR:
-           System.out.println("Hasta luego!!!!");
-          break;
-        case INSERTAR_HUESPED:
-            insertarHuesped();
-            break;
-        case BUSCAR_HUESPED:
-            buscarHuesped();
-            break;
-        case BORRAR_HUESPED:
-            borrarHuesped();
-            break;
-        case MOSTRAR_HUESPEDES:
-            mostrarHuespedes();
-            break;
-        case INSERTAR_HABITACION:
-            insertarHabitacion();
-            break;
-        case BUSCAR_HABITACION:
-            buscarHabitacion();
-            break;
-        case BORRAR_HABITACION:
-            borrarHabitacion();
-            break;
-        case MOSTRAR_HABITACIONES:
-           mostrarHabitaciones();
-           break;
-        case INSERTAR_RESERVA:
-           insertarReserva();
-           break;
-        case ANULAR_RESERVA:
-            anularReserva();
-            break;
-        case MOSTRAR_RESERVAS:
-            mostrarReservas();
-            break;
-        case CONSULTAR_DISPONIBILIDAD:
-            consultarDisponibilidad();
-            break;
-       }
-
-
     }
 }

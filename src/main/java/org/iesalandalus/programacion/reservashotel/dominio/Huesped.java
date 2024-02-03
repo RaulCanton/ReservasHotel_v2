@@ -21,6 +21,29 @@ public class Huesped {
     private LocalDate fechaNacimiento;
 
 
+
+    public Huesped(String nombre,String dni,String correo, String telefono,LocalDate fechaNacimiento){
+
+
+        setNombre(nombre);
+        setDni(dni);
+        setCorreo(correo);
+        setTelefono(telefono);
+        setFechaNacimiento(fechaNacimiento);
+
+    }
+
+    public Huesped (Huesped huesped){
+        Objects.requireNonNull(huesped, "No es posible copiar un huésped nulo.");
+
+
+        setNombre(huesped.getNombre());
+        setDni(huesped.getDni());
+        setCorreo(huesped.getCorreo());
+        setTelefono(huesped.getTelefono());
+        setFechaNacimiento(huesped.getFechaNacimiento());
+    }
+
     public String getNombre() {
     return nombre;
     }
@@ -91,7 +114,7 @@ public class Huesped {
         return dni;
     }
 
-    private void setDni(String dni){
+    public void setDni(String dni){
         if (dni==null){
             throw  new NullPointerException("ERROR: El dni de un huésped no puede ser nulo.");
         }
@@ -127,7 +150,7 @@ public class Huesped {
     }
 
 
-    private void setFechaNacimiento(LocalDate fechaNacimiento){
+    public void setFechaNacimiento(LocalDate fechaNacimiento){
         if (fechaNacimiento==null){
             throw  new NullPointerException("ERROR: La fecha de nacimiento de un huésped no puede ser nula.");
         }
@@ -139,7 +162,7 @@ public class Huesped {
 
         return fechaNacimiento;
     }
-    private String getIniciales(){
+    public String getIniciales(){
        StringBuilder iniciales=new StringBuilder();
        StringTokenizer palabras = new StringTokenizer(nombre);
 
@@ -151,29 +174,6 @@ public class Huesped {
         }
         return iniciales.toString();
     }
-
-
-public Huesped(String nombre,String dni,String correo, String telefono,LocalDate fechaNacimiento){
-
-
-        setNombre(nombre);
-        setDni(dni);
-        setCorreo(correo);
-        setTelefono(telefono);
-        setFechaNacimiento(fechaNacimiento);
-
-}
-
-public Huesped (Huesped huesped){
-     Objects.requireNonNull(huesped, "No es posible copiar un huésped nulo.");
-
-
-        setNombre(huesped.getNombre());
-        setDni(huesped.getDni());
-        setCorreo(huesped.getCorreo());
-        setTelefono(huesped.getTelefono());
-        setFechaNacimiento(huesped.getFechaNacimiento());
-}
 
     @Override
     public boolean equals(Object o) {
