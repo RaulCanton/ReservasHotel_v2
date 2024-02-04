@@ -1,12 +1,12 @@
 package org.iesalandalus.programacion.reservashotel;
 
 
-import org.iesalandalus.programacion.reservashotel.dominio.Habitacion;
-import org.iesalandalus.programacion.reservashotel.dominio.Huesped;
-import org.iesalandalus.programacion.reservashotel.dominio.Reserva;
-import org.iesalandalus.programacion.reservashotel.negocio.Habitaciones;
-import org.iesalandalus.programacion.reservashotel.negocio.Huespedes;
-import org.iesalandalus.programacion.reservashotel.negocio.Reservas;
+import org.iesalandalus.programacion.reservashotel.Modelo.dominio.Habitacion;
+import org.iesalandalus.programacion.reservashotel.Modelo.dominio.Huesped;
+import org.iesalandalus.programacion.reservashotel.Modelo.dominio.Reserva;
+import org.iesalandalus.programacion.reservashotel.Modelo.negocio.Habitaciones;
+import org.iesalandalus.programacion.reservashotel.Modelo.negocio.Huespedes;
+import org.iesalandalus.programacion.reservashotel.Modelo.negocio.Reservas;
 import org.iesalandalus.programacion.reservashotel.vista.Consola;
 import org.iesalandalus.programacion.reservashotel.vista.Opcion;
 
@@ -188,11 +188,31 @@ private static void borrarHuesped() throws OperationNotSupportedException{
         }
     }
 
-    private static void listarReservas() {}
-    private static void getReservasAnulables() {}
-    private static void anularReserva() {}
+    private static void listarReservas() {
 
-    private static void consultarDisponibilidad () {}
+    Huesped huesped1=new Huesped(buscarHuesped());
+
+
+
+
+
+    }
+    private static void getReservasAnulables() {
+
+
+
+    }
+    private static void anularReserva() {
+
+
+
+    }
+
+    private static void consultarDisponibilidad () {
+
+
+
+    }
 
     private static void mostrarReservas() {
         Reserva[] muestraReserva = reservas.get();

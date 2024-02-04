@@ -1,13 +1,13 @@
-package org.iesalandalus.programacion.reservashotel.negocio;
+package org.iesalandalus.programacion.reservashotel.Modelo.negocio;
 
-import org.iesalandalus.programacion.reservashotel.dominio.Habitacion;
-import org.iesalandalus.programacion.reservashotel.dominio.Huesped;
-import org.iesalandalus.programacion.reservashotel.dominio.Reserva;
-import org.iesalandalus.programacion.reservashotel.dominio.TipoHabitacion;
+import org.iesalandalus.programacion.reservashotel.Modelo.dominio.Habitacion;
+import org.iesalandalus.programacion.reservashotel.Modelo.dominio.Huesped;
+import org.iesalandalus.programacion.reservashotel.Modelo.dominio.Reserva;
+import org.iesalandalus.programacion.reservashotel.Modelo.dominio.TipoHabitacion;
+import org.iesalandalus.programacion.utilidades.Entrada;
 
 import javax.naming.OperationNotSupportedException;
 import java.time.LocalDate;
-import java.util.Scanner;
 
 public class Reservas {
 
@@ -176,12 +176,16 @@ public class Reservas {
     }
 
     public void realizarCheckin (Reserva reserva, LocalDate fecha){
-        System.out.print("Introduce la fecha");
-        fecha= Scanner
 
+        System.out.print("Introduce la fecha de checkIn.");
+        String fechaCheckIn= Entrada.cadena();
+        fecha=LocalDate.parse(fechaCheckIn);
         reserva.setCheckIn(fecha);
     }
     public void realizarCheckout (Reserva reserva, LocalDate fecha){
-
+        System.out.print("Introduce la fecha de checkOut.");
+        String fechaCheckOut= Entrada.cadena();
+        fecha=LocalDate.parse(fechaCheckOut);
+        reserva.setCheckOut(fecha);
     }
 }

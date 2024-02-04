@@ -2,7 +2,11 @@ package org.iesalandalus.programacion.reservashotel.negocio;
 
 
 import org.iesalandalus.programacion.reservashotel.MainApp;
+import org.iesalandalus.programacion.reservashotel.Modelo.dominio.*;
+import org.iesalandalus.programacion.reservashotel.Modelo.dominio.dominio.*;
+import org.iesalandalus.programacion.reservashotel.Modelo.negocio.Reservas;
 import org.iesalandalus.programacion.reservashotel.dominio.*;
+import org.iesalandalus.programacion.reservashotel.dominio.dominio.*;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 

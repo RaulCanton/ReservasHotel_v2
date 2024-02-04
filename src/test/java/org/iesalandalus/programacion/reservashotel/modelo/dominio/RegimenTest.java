@@ -1,5 +1,7 @@
-package org.iesalandalus.programacion.reservashotel.dominio;
+package org.iesalandalus.programacion.reservashotel.modelo.dominio;
 
+import org.iesalandalus.programacion.reservashotel.Modelo.dominio.Regimen;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,7 +14,7 @@ public class RegimenTest {
 
     @Test
     void objectosValidosRegimen() {
-        assertEquals("SOLO_ALOJAMIENTO", Regimen.SOLO_ALOJAMIENTO.name(), NOMBRE_NO_VALIDO);
+        Assertions.assertEquals("SOLO_ALOJAMIENTO", Regimen.SOLO_ALOJAMIENTO.name(), NOMBRE_NO_VALIDO);
         assertEquals("ALOJAMIENTO_DESAYUNO", Regimen.ALOJAMIENTO_DESAYUNO.name(), NOMBRE_NO_VALIDO);
         assertEquals("MEDIA_PENSION", Regimen.MEDIA_PENSION.name(), NOMBRE_NO_VALIDO);
         assertEquals("PENSION_COMPLETA", Regimen.PENSION_COMPLETA.name(), NOMBRE_NO_VALIDO);

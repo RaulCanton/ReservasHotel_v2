@@ -1,8 +1,8 @@
-package org.iesalandalus.programacion.reservashotel.dominio;
+package org.iesalandalus.programacion.reservashotel.modelo.dominio;
 
+import org.iesalandalus.programacion.reservashotel.Modelo.dominio.Habitacion;
+import org.iesalandalus.programacion.reservashotel.Modelo.dominio.TipoHabitacion;
 import org.junit.jupiter.api.Test;
-
-import java.time.format.DateTimeFormatter;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;

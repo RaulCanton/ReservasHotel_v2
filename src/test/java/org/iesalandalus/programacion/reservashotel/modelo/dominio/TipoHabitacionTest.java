@@ -1,5 +1,7 @@
-package org.iesalandalus.programacion.reservashotel.dominio;
+package org.iesalandalus.programacion.reservashotel.modelo.dominio;
 
+import org.iesalandalus.programacion.reservashotel.Modelo.dominio.TipoHabitacion;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -12,7 +14,7 @@ public class TipoHabitacionTest {
 
     @Test
     void objectosValidosTipoHabitacion() {
-        assertEquals("SUITE", TipoHabitacion.SUITE.name(), NOMBRE_NO_VALIDO);
+        Assertions.assertEquals("SUITE", TipoHabitacion.SUITE.name(), NOMBRE_NO_VALIDO);
         assertEquals("SIMPLE", TipoHabitacion.SIMPLE.name(), NOMBRE_NO_VALIDO);
         assertEquals("DOBLE", TipoHabitacion.DOBLE.name(), NOMBRE_NO_VALIDO);
         assertEquals("TRIPLE", TipoHabitacion.TRIPLE.name(), NOMBRE_NO_VALIDO);

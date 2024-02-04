@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.reservashotel.dominio;
+package org.iesalandalus.programacion.reservashotel.Modelo.dominio;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
@@ -146,7 +146,7 @@ public class Reserva {
     }
 
     private void setPrecio() {
-        if(habitacion.getTipoHabitacion()==TipoHabitacion.SIMPLE){
+        if(habitacion.getTipoHabitacion()== TipoHabitacion.SIMPLE){
             precio = precio+(TipoHabitacion.SIMPLE.numeroMaximoPersonas *50);
         }
         if (habitacion.getTipoHabitacion()==TipoHabitacion.DOBLE){
