@@ -29,7 +29,7 @@ public class Modelo {
         System.out.println("El programa ha terminado.");
     }
 
-    private static void insertarHuesped(){
+    public static void insertarHuesped(){
         try {
             Huesped huesped1 = Consola.leerHuesped();
             huespedes.insertar(huesped1);
@@ -41,7 +41,7 @@ public class Modelo {
 
     }
 
-    private static Huesped buscarHuesped() {
+    public static Huesped buscarHuesped() {
 
         Huesped huesped1;
         do {
@@ -54,7 +54,7 @@ public class Modelo {
 
     }
 
-    private static void borrarHuesped() throws OperationNotSupportedException{
+    public static void borrarHuesped() throws OperationNotSupportedException{
 
         Huesped huesped1;
         do {
@@ -71,7 +71,7 @@ public class Modelo {
         return huespedes.get();
     }
 
-    private static void insertarHabitacion(){
+    public static void insertarHabitacion(){
         try {
             Habitacion habitacion1 = Consola.leerHabitacion();
             habitaciones.insertar(habitacion1);
@@ -81,7 +81,7 @@ public class Modelo {
         }
 
     }
-    private static Habitacion buscarHabitacion() {
+    public static Habitacion buscarHabitacion() {
         Habitacion habitacion1;
         do {
             habitacion1 = new Habitacion(Consola.leerHabitacionPorIdentificador());
@@ -92,7 +92,7 @@ public class Modelo {
 
     }
 
-    private static void borrarHabitacion() throws OperationNotSupportedException{
+    public static void borrarHabitacion() throws OperationNotSupportedException{
 
         Habitacion habitacion1;
         do {
@@ -108,7 +108,7 @@ public class Modelo {
     public Habitacion[] getHabitaciones(){
         return habitaciones.get();
     }
-    private static void insertarReserva(){
+    public static void insertarReserva(){
 
         try {
             Reserva reserva1 = Consola.leerReserva();
