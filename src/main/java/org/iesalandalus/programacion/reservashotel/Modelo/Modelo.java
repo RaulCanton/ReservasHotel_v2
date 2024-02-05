@@ -3,6 +3,7 @@ package org.iesalandalus.programacion.reservashotel.Modelo;
 import org.iesalandalus.programacion.reservashotel.Modelo.dominio.Habitacion;
 import org.iesalandalus.programacion.reservashotel.Modelo.dominio.Huesped;
 import org.iesalandalus.programacion.reservashotel.Modelo.dominio.Reserva;
+import org.iesalandalus.programacion.reservashotel.Modelo.dominio.TipoHabitacion;
 import org.iesalandalus.programacion.reservashotel.Modelo.negocio.Habitaciones;
 import org.iesalandalus.programacion.reservashotel.Modelo.negocio.Huespedes;
 import org.iesalandalus.programacion.reservashotel.Modelo.negocio.Reservas;
@@ -119,17 +120,49 @@ public class Modelo {
 
         }
     }
+    public static void borrarReserva() throws OperationNotSupportedException{
 
+        Reserva reserva1;
+        do {
+            reserva1 = new Reserva(Consola.leerReserva());
+        } while (reserva1 == null);
+        Reserva reserva2= reservas.buscar(reserva1);
+
+        reservas.borrar(reserva2);
+        System.out.println("Se ha borrado la reserva.");
+
+    }
+    public static Reserva buscarReserva(Reserva reserva) {
+        Reserva reserva1;
+        do {
+            reserva1 = new Reserva(Consola.leerReserva());
+        } while (reserva1 == null);
+
+        Reserva reserva2 = reservas.buscar(reserva1);
+        return reserva2;
+
+    }
 
     public Reserva[] getReservas(){
         return reservas.get();
     }
+    public Reserva[] getReservas (Huesped huesped){
+        return reservas.getReservas(huesped);
+    }
 
-    public void realizarChecin(Reserva reserva, LocalDate fecha){
+    public Reserva[] getReservas(TipoHabitacion tipoHabitacion){
+        return reservas.getReservas(tipoHabitacion);
+    }
+
+    public Reserva[] getReservasFuturas(Habitacion habitacion){
+        return reservas.getReservasFuturas(habitacion);
+    }
+
+    public void realizarChecin(Reserva reserva, LocalDate fecha)throws OperationNotSupportedException{
         reservas.realizarCheckin(reserva,fecha);
     }
 
-    public void realizarChecout(Reserva reserva, LocalDate fecha){
+    public void realizarChecout(Reserva reserva, LocalDate fecha)throws OperationNotSupportedException{
         reservas.realizarCheckout(reserva,fecha);
     }
 

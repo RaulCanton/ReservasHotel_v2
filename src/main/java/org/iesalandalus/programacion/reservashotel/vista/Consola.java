@@ -1,9 +1,6 @@
 package org.iesalandalus.programacion.reservashotel.vista;
 
 import org.iesalandalus.programacion.reservashotel.Modelo.dominio.*;
-import org.iesalandalus.programacion.reservashotel.Modelo.dominio.dominio.*;
-import org.iesalandalus.programacion.reservashotel.dominio.*;
-import org.iesalandalus.programacion.reservashotel.dominio.dominio.*;
 import org.iesalandalus.programacion.utilidades.Entrada;
 
 import java.time.LocalDate;
@@ -149,7 +146,7 @@ public class Consola {
         do {
             System.out.print("Introduce el tipo de habitación 1.-SUITE 2.-SIMPLE 3.-DOBLE 4.-TRIPLE .");
             tipoHabi = Entrada.entero();
-        } while (tipoHabi < 1 || tipoHabi > 4);
+        } while (tipoHabi < 1 && tipoHabi > 4);
         return TipoHabitacion.values()[tipoHabi];
 
     }

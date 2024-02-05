@@ -32,6 +32,8 @@ public class Reserva {
         setFechaInicioReserva(fechaInicioReserva);
         setFechaFinReserva(fechaFinReserva);
         setNumeroPersonas(numeroPersonas);
+        this.checkIn=null;
+        this.checkOut=null;
     }
 
     public Reserva(Reserva reserva){

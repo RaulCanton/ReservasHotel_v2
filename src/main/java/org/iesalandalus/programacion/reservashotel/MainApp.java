@@ -4,6 +4,7 @@ package org.iesalandalus.programacion.reservashotel;
 import org.iesalandalus.programacion.reservashotel.Modelo.dominio.Habitacion;
 import org.iesalandalus.programacion.reservashotel.Modelo.dominio.Huesped;
 import org.iesalandalus.programacion.reservashotel.Modelo.dominio.Reserva;
+import org.iesalandalus.programacion.reservashotel.Modelo.dominio.TipoHabitacion;
 import org.iesalandalus.programacion.reservashotel.Modelo.negocio.Habitaciones;
 import org.iesalandalus.programacion.reservashotel.Modelo.negocio.Huespedes;
 import org.iesalandalus.programacion.reservashotel.Modelo.negocio.Reservas;
@@ -11,6 +12,7 @@ import org.iesalandalus.programacion.reservashotel.vista.Consola;
 import org.iesalandalus.programacion.reservashotel.vista.Opcion;
 
 import javax.naming.OperationNotSupportedException;
+import java.time.LocalDate;
 
 public class MainApp {
 
@@ -190,13 +192,33 @@ private static void borrarHuesped() throws OperationNotSupportedException{
 
     private static void listarReservas() {
 
-    Huesped huesped1=new Huesped(buscarHuesped());
+        Huesped huesped=buscarHuesped();
+        Reserva[] reservaHuesped=reservas.getReservas(huesped);
 
+        if (reservaHuesped.length==0){
+            System.out.println("Este huésped no tiene nínguna reserva.");
+        } else {
+           for (Reserva reserva : reservaHuesped){
+               System.out.println("Las reservas para el huésped "+huesped+ " son "+reserva);
+           }
+        }
 
+        TipoHabitacion tipoHabitacion=Consola.leerTipoHabitacion();
+        Reserva[] reservaTipoHabitacion=reservas.getReservas(tipoHabitacion);
+        if (reservaTipoHabitacion.length==0) {
+            System.out.println("Este tipo de habitación no tiene nínguna reserva.");
+        } else {
+            for( Reserva reserva:reservaTipoHabitacion) {
+                System.out.println("Las reservas para el tipo de habitación " + tipoHabitacion + " son " + reservaTipoHabitacion);
+            }
+        }
 
-
-
+        LocalDate fecha=Consola.leerFecha("");
+        //Reserva[] reservaFecha=reservas.reserva.getFechainicio();
     }
+
+
+
     private static void getReservasAnulables() {
 
 

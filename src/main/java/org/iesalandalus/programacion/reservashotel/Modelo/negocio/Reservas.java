@@ -167,22 +167,30 @@ public class Reservas {
         }
         Reserva[] reservasHabitacion = new Reserva[capacidad];
         int indice = 0;
-        for (Reserva reserva : coleccionReserva) {
-            if (reserva != null && reserva.getHabitacion().equals(habitacion)) {
+        for (Reserva reserva : reservasHabitacion) {
+            if (reserva != null && reserva.getHabitacion().equals(habitacion)
+            && reserva.getFechaInicioReserva().isAfter(LocalDate.now())) {
                 reservasHabitacion[indice++] = new Reserva(reserva);
             }
         }
         return reservasHabitacion;
     }
 
-    public void realizarCheckin (Reserva reserva, LocalDate fecha){
+    public void realizarCheckin (Reserva reserva, LocalDate fecha)throws OperationNotSupportedException{
+        if (reserva == null) {
+            throw new NullPointerException("ERROR: La reserva no puede ser nula.");
+        }
 
         System.out.print("Introduce la fecha de checkIn.");
         String fechaCheckIn= Entrada.cadena();
         fecha=LocalDate.parse(fechaCheckIn);
         reserva.setCheckIn(fecha);
     }
-    public void realizarCheckout (Reserva reserva, LocalDate fecha){
+    public void realizarCheckout (Reserva reserva, LocalDate fecha)throws OperationNotSupportedException{
+        if (reserva == null) {
+            throw new NullPointerException("ERROR: La reserva no puede ser nula.");
+        }
+
         System.out.print("Introduce la fecha de checkOut.");
         String fechaCheckOut= Entrada.cadena();
         fecha=LocalDate.parse(fechaCheckOut);
