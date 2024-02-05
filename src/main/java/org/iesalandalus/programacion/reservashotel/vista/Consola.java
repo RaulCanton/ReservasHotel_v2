@@ -35,38 +35,19 @@ public class Consola {
 
     public static Huesped leerHuesped() {
 
-            String nombre;
-            String dni;
-            String telefono;
-            String correo;
 
-            String fechaNacimiento;
+        System.out.print("Introduce el nombre del huésped: ");
+        String nombre = Entrada.cadena();
+        System.out.print("Introduce el dni del cliente: ");
+        String dni = Entrada.cadena();
+        System.out.print("Introduce el teléfono del huésped: ");
+        String telefono = Entrada.cadena();
+        System.out.print("Introduce el correo del huésped: ");
+        String correo = Entrada.cadena();
+        System.out.print("Introduce la fecha de nacimiento del huésped: ");
+        String fechaNacimiento = Entrada.cadena();
 
-            do {
-                System.out.print("Introduce el nombre del huésped: ");
-                nombre = Entrada.cadena();
-
-            } while (nombre.equals(""));
-            do {
-                System.out.print("Introduce el dni del cliente: ");
-                dni = Entrada.cadena();
-
-            } while (dni.equals(""));
-            do {
-                System.out.print("Introduce el teléfono del huésped: ");
-                telefono = Entrada.cadena();
-            } while (telefono == null || telefono.equals(""));
-            do {
-                System.out.print("Introduce el correo del huésped: ");
-                correo = Entrada.cadena();
-            } while (correo == null || correo.equals(""));
-            do {
-                System.out.print("Introduce la fecha de nacimiento del huésped: ");
-                fechaNacimiento = Entrada.cadena();
-            } while (fechaNacimiento == null || fechaNacimiento.equals(""));
-
-            //return huesped;
-           return new Huesped (nombre,dni,telefono,correo,LocalDate.parse(fechaNacimiento));
+        return new Huesped (nombre,dni,telefono,correo,LocalDate.parse(fechaNacimiento));
 
     }
     public static Huesped leerClientePorDni(){
@@ -199,14 +180,3 @@ public class Consola {
         return fechaHora;
     }
 }
-
-
-// return new Huesped(huesped);
-            /*LocalDate formatoDia = LocalDate.parse(fechaNacimiento);
-                Huesped huesped1=new Huesped();
-                    huesped1.setNombre(nombre);
-                    huesped1.setDni(dni);
-                    huesped1.setCorreo(correo);
-                    huesped1.setTelefono(telefono);
-                    huesped1.setFechaNacimiento(fechaNacimiento);
-            return Huesped huesped1;*/

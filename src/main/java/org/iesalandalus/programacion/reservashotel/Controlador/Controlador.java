@@ -29,12 +29,12 @@ public class Controlador {
 
         this.modelo=modelo;
         this.vista=vista;
-        //this.vista.setControlador(this);
+        this.vista.setControlador(this);
     }
 
     public void comenzar(){
         modelo.comenzar();
-        //vista.comenzar();
+        vista.comenzar();
     }
     public void terminar(){
         modelo.terminar();
@@ -56,7 +56,7 @@ public class Controlador {
         return modelo.getHuespedes();
     }
 
-    public void insertar(Habitacion habitacion){
+    public void insertar(Habitacion habitacion)throws OperationNotSupportedException{
         modelo.insertarHabitacion();
 
     }

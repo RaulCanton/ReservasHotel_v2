@@ -72,14 +72,9 @@ public class Modelo {
         return huespedes.get();
     }
 
-    public static void insertarHabitacion(){
-        try {
+    public static void insertarHabitacion()throws OperationNotSupportedException{
             Habitacion habitacion1 = Consola.leerHabitacion();
             habitaciones.insertar(habitacion1);
-
-        } catch (OperationNotSupportedException e){
-            System.out.println("No se puede insertar la habitación.");
-        }
 
     }
     public static Habitacion buscarHabitacion() {
