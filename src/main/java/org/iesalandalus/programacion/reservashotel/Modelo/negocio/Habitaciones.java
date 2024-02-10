@@ -13,11 +13,10 @@ public class Habitaciones {
         coleccionHabitacion=new ArrayList<>();
     }
 
-
     public List<Habitacion> get(){
-
         return copiaProfundaHabitacion(coleccionHabitacion);
     }
+
     public List<Habitacion> get(TipoHabitacion tipoHabitacion){
         if (tipoHabitacion == null) {
             throw new NullPointerException("ERROR: El tipo de habitación no puede ser nulo.");
@@ -26,7 +25,7 @@ public class Habitaciones {
         List<Habitacion>habitacionTipoHabitacion = new ArrayList<>();
         for (Habitacion habitacion : coleccionHabitacion) {
             if (habitacion != null && habitacion.getTipoHabitacion().equals(tipoHabitacion)) {
-                habitacionTipoHabitacion.add(habitacion);
+                habitacionTipoHabitacion.add(new Habitacion(habitacion));//constructor copia
             }
         }
         return habitacionTipoHabitacion;
