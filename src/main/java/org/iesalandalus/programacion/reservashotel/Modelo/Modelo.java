@@ -11,18 +11,19 @@ import org.iesalandalus.programacion.reservashotel.vista.Consola;
 
 import javax.naming.OperationNotSupportedException;
 import java.time.LocalDate;
+import java.util.List;
 
 public class Modelo {
-    public static int CAPACIDAD=15;
+
     private static Reservas reservas;
     private static Habitaciones habitaciones;
     private static Huespedes huespedes;
 
     public void comenzar() {
 
-        reservas = new Reservas(CAPACIDAD);
-        habitaciones = new Habitaciones(CAPACIDAD);
-        huespedes = new Huespedes(CAPACIDAD);
+        reservas = new Reservas();
+        habitaciones = new Habitaciones();
+        huespedes = new Huespedes();
 
 
     }
@@ -68,7 +69,7 @@ public class Modelo {
 
     }
 
-    public Huesped[] getHuespedes(){
+    public List<Huesped> getHuespedes(){
         return huespedes.get();
     }
 
@@ -101,7 +102,7 @@ public class Modelo {
 
     }
 
-    public Habitacion[] getHabitaciones(){
+    public List<Habitacion> getHabitaciones(){
         return habitaciones.get();
     }
     public static void insertarReserva(){
@@ -138,18 +139,18 @@ public class Modelo {
 
     }
 
-    public Reserva[] getReservas(){
+    public List<Reserva> getReservas(){
         return reservas.get();
     }
-    public Reserva[] getReservas (Huesped huesped){
+    public List<Reserva> getReservas (Huesped huesped){
         return reservas.getReservas(huesped);
     }
 
-    public Reserva[] getReservas(TipoHabitacion tipoHabitacion){
+    public List<Reserva> getReservas(TipoHabitacion tipoHabitacion){
         return reservas.getReservas(tipoHabitacion);
     }
 
-    public Reserva[] getReservasFuturas(Habitacion habitacion){
+    public List<Reserva> getReservasFuturas(Habitacion habitacion){
         return reservas.getReservasFuturas(habitacion);
     }
 
