@@ -31,15 +31,10 @@ public class Modelo {
         System.out.println("El programa ha terminado.");
     }
 
-    public static void insertarHuesped(){
-        try {
+    public static void insertarHuesped()throws OperationNotSupportedException{
+
             Huesped huesped1 = Consola.leerHuesped();
             huespedes.insertar(huesped1);
-
-        } catch (OperationNotSupportedException e){
-            System.out.println("No se puede insertar el cliente.");
-
-        }
 
     }
 
@@ -105,16 +100,11 @@ public class Modelo {
     public List<Habitacion> getHabitaciones(){
         return habitaciones.get();
     }
-    public static void insertarReserva(){
+    public static void insertarReserva()throws OperationNotSupportedException{
 
-        try {
             Reserva reserva1 = Consola.leerReserva();
             reservas.insertar(reserva1);
 
-        } catch (OperationNotSupportedException e) {
-            System.out.println("No se puede crear la reserva");
-
-        }
     }
     public static void borrarReserva() throws OperationNotSupportedException{
 
@@ -154,11 +144,11 @@ public class Modelo {
         return reservas.getReservasFuturas(habitacion);
     }
 
-    public void realizarChecin(Reserva reserva, LocalDate fecha)throws OperationNotSupportedException{
+    public void realizarCheckin(Reserva reserva, LocalDate fecha)throws OperationNotSupportedException{
         reservas.realizarCheckin(reserva,fecha);
     }
 
-    public void realizarChecout(Reserva reserva, LocalDate fecha)throws OperationNotSupportedException{
+    public void realizarCheckout(Reserva reserva, LocalDate fecha)throws OperationNotSupportedException{
         reservas.realizarCheckout(reserva,fecha);
     }
 

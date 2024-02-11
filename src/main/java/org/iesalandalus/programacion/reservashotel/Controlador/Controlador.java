@@ -39,10 +39,10 @@ public class Controlador {
     }
     public void terminar(){
         modelo.terminar();
-        //vista.terminar();
+        vista.terminar();
     }
 
-    public void insertar(Huesped huesped){
+    public void insertar(Huesped huesped)throws OperationNotSupportedException{
         modelo.insertarHuesped();
     }
     public Huesped buscar(Huesped huesped){
@@ -77,7 +77,7 @@ public class Controlador {
         return modelo.getHabitaciones();
     }
 
-    public void insertar (Reserva reserva){
+    public void insertar (Reserva reserva) throws OperationNotSupportedException{
         modelo.insertarReserva();
     }
 
@@ -104,11 +104,11 @@ public class Controlador {
         return modelo.getReservasFuturas(habitacion);
     }
 
-    public void realizarChecIn(Reserva reserva, LocalDate fecha)throws OperationNotSupportedException{
-        modelo.realizarChecin(reserva,fecha);
+    public void realizarCheckIn(Reserva reserva, LocalDate fecha)throws OperationNotSupportedException{
+        modelo.realizarCheckin(reserva,fecha);
     }
-    public void realizarChecOut(Reserva reserva,LocalDate fecha)throws OperationNotSupportedException{
-        modelo.realizarChecout(reserva,fecha);
+    public void realizarCheckOut(Reserva reserva,LocalDate fecha)throws OperationNotSupportedException{
+        modelo.realizarCheckout(reserva,fecha);
     }
 
 }
