@@ -4,103 +4,54 @@ import org.iesalandalus.programacion.reservashotel.Modelo.dominio.Huesped;
 
 
 import javax.naming.OperationNotSupportedException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Huespedes {
 
-
-    private int capacidad;
-    private int tamano;
-    private Huesped [] coleccionHuesped;
+    private List<Huesped> coleccionHuesped;
 
 
-    public Huespedes (int capacidad) {
-        if (capacidad <=0){
-            throw new IllegalArgumentException("ERROR: La capacidad debe ser mayor que cero.");
-        }
-
-        this.capacidad=capacidad;
-        coleccionHuesped = new Huesped[capacidad];
-        tamano =0;
-
-
+    public Huespedes () {
+       coleccionHuesped = new ArrayList<>();
     }
 
-    public Huesped[] get(){
+    public List<Huesped> get(){
+       return copiaProfundaHuesped(coleccionHuesped);
+    }List<Huesped> copiaProfundaHuesped(List <Huesped> huespeds){
 
-       return copiaProfundaHuesped();
-    }
-    private Huesped[] copiaProfundaHuesped(){
-
-        Huesped[] copiaHuesped = new Huesped[capacidad];
-        for (int i =0; !tamanoSuperado(i);i++){
-            copiaHuesped[i] =new Huesped(coleccionHuesped[i]);
+        List<Huesped> otrosHuesped = new ArrayList<>();
+        for (Huesped huesped: huespeds){
+            otrosHuesped.add(new Huesped(huesped));
         }
-        return copiaHuesped;
+        return otrosHuesped;
     }
     public int getTamano() {
-        return tamano;
+        return coleccionHuesped.size();
     }
 
-    public int getCapacidad() {
-        return capacidad;
-    }
+
     public void insertar (Huesped huesped) throws OperationNotSupportedException{
         if (huesped == null) {
             throw new NullPointerException("ERROR: No se puede insertar un huésped nulo.");
         }
-        int indice=buscarIndice(huesped);
-        if (capacidadSuperada(indice)){
-            throw new OperationNotSupportedException("ERROR: No se aceptan más huéspedes.");
-        }
-        if (tamanoSuperado(indice)){
-            coleccionHuesped[indice]= new Huesped(huesped);
-            tamano++;
-        }else {
+        int indice=coleccionHuesped.indexOf(huesped);
+        if (indice==-1){
+            coleccionHuesped.add(new Huesped(huesped));
+        } else {
             throw new OperationNotSupportedException("ERROR:Y existe un huésped con esos datos.");
         }
     }
-
-
-
-    private int buscarIndice (Huesped huesped) {
-
-            int indice=-1;
-            boolean huespedEncontrado = false;
-        if (huesped == null) {
-            throw new NullPointerException("ERROR: No se puede buscar el indice de un huésped nulo.");
-        }
-          while (!tamanoSuperado(indice) && !huespedEncontrado) {
-            if (coleccionHuesped[indice].equals(huesped)) {
-                huespedEncontrado = true;
-            } else {
-                indice++;
-            }
-        }
-        return indice;
-    }
-    private boolean tamanoSuperado(int indice){
-        return indice>=tamano;
-
-    }
-
-    private boolean capacidadSuperada(int indice){
-
-            return indice>=capacidad;
-
-    }
     public Huesped buscar (Huesped huesped){
-
+        Huesped huespedEncontrado= null;
         if (huesped == null) {
             throw new NullPointerException("ERROR: No se puede buscar un huésped nulo.");
         }
 
-        int indice=buscarIndice(huesped);
-        if (tamanoSuperado(indice)){
-            return null;
-        }else{
-            return new Huesped(coleccionHuesped[indice]);
+        if (coleccionHuesped.contains(huesped)){
+            huespedEncontrado=new Huesped(coleccionHuesped.get(coleccionHuesped.indexOf(huesped)));
         }
-
+            return huespedEncontrado;
     }
 
     public void borrar (Huesped huesped) throws OperationNotSupportedException {
@@ -108,27 +59,10 @@ public class Huespedes {
             throw new NullPointerException("ERROR: No se puede borrar un huésped nulo.");
         }
 
-
-        int indice = buscarIndice(huesped);
-        if (tamanoSuperado(indice)) {
-            throw new OperationNotSupportedException("ERROR:No existe ningún huésped con ese nombre.");
+        if (coleccionHuesped.contains(huesped)) {
+            coleccionHuesped.remove(huesped);
         } else {
-            despalzarUnaPosicionHaciaLaIzquierda(indice);
+            throw new OperationNotSupportedException("ERROR:No existe el huésped a borrar.");
         }
     }
-
-
-    private void despalzarUnaPosicionHaciaLaIzquierda(int indice){
-        int i;
-
-        for (i = indice; !tamanoSuperado(i); i++){
-
-            coleccionHuesped[i] = coleccionHuesped[i+1];
-        }
-        coleccionHuesped[i]=null;
-        tamano--;
-
-    }
-
-
 }
