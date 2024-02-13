@@ -32,7 +32,7 @@ public class Vista {
 
 
         do {
-           //controlador.comenzar();
+            //controlador.comenzar();
             Consola.mostrarMenu();
             ejecutarOpcion(Consola.elegirOpcion());
         }while (Consola.elegirOpcion() !=Opcion.SALIR);

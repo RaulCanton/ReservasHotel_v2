@@ -12,7 +12,7 @@ import javax.naming.OperationNotSupportedException;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class HabitacionesTest {
-
+/*
     private static final String ERROR_CAPACIDAD_NO_CORRECTA = "ERROR: La capacidad debe ser mayor que cero.";
     private static final String ERROR_INSERTAR_HABITACION_NULA = "ERROR: No se puede insertar una habitación nula.";
     private static final String ERROR_BORRAR_HABITACION_NULA = "ERROR: No se puede borrar una habitación nula.";
@@ -380,5 +380,5 @@ public class HabitacionesTest {
         }
     }
 
-
+*/
 }

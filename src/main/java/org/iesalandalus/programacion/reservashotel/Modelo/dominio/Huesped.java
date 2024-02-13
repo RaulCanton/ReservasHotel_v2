@@ -123,7 +123,7 @@ public class Huesped {
     }
 
     private boolean comprobarLetraDni(String dni) {
-        // boolean resultado = true;
+
 
         Pattern patron;
         Matcher comparador;
@@ -155,7 +155,7 @@ public class Huesped {
         }
         DateTimeFormatter fechaFormato = DateTimeFormatter.ofPattern(FORMATO_FECHA);
         this.fechaNacimiento= LocalDate.parse(fechaNacimiento.format(fechaFormato));
-       // this.fechaNacimiento=fechaNacimiento;
+
     }
     public LocalDate getFechaNacimiento(){
 
