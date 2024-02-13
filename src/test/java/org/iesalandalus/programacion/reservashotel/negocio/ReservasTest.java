@@ -1,6 +1,6 @@
 package org.iesalandalus.programacion.reservashotel.negocio;
-
 /*
+
 import org.iesalandalus.programacion.reservashotel.MainApp;
 import org.iesalandalus.programacion.reservashotel.Modelo.dominio.*;
 import org.iesalandalus.programacion.reservashotel.Modelo.dominio.dominio.*;
@@ -549,5 +549,6 @@ public class ReservasTest {
         }
     }
 
-*/
+
 }
+*/
