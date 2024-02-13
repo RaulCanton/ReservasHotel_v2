@@ -21,7 +21,7 @@ import java.util.List;
 public class Vista {
 
     private static Controlador controlador;
-    public Vista(){};
+    public Vista(){}
     public void setControlador(Controlador controlador) {
         if (controlador == null) {
             throw new NullPointerException("ERROR: El controlador no puede ser nulo.");

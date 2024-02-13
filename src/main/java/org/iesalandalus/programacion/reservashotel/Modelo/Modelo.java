@@ -19,13 +19,13 @@ public class Modelo {
     private static Habitaciones habitaciones;
     private static Huespedes huespedes;
 
+    public Modelo(){}
+
     public void comenzar() {
 
         reservas = new Reservas();
         habitaciones = new Habitaciones();
         huespedes = new Huespedes();
-
-
     }
     public void terminar(){
         System.out.println("El programa ha terminado.");
